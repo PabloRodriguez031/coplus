@@ -1,0 +1,29 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Editar Iglesia</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/iglesia']" routerLinkActive="active">Listado Iglesias</a></li>
+                    <li class="breadcrumb-item"><a>Editar Iglesia</a></li>
+                  </ol>
+                </nav>
+              <form #iglesiaForm="ngForm" (ngSubmit)="updateDocumento()">
+                  <label>Nombre de Iglesia</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="documento.data['nombre']" required>
+                  </div>
+                  <div class="card-footer text-center">
+                      <button [disabled]="!iglesiaForm.valid" type="submit" class="btn btn-info">Editar Iglesia</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+</div>
+  

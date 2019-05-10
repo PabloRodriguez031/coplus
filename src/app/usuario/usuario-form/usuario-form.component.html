@@ -1,0 +1,77 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Nueva Red</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/usuario']" routerLinkActive="active">Listado Usuarios</a></li>
+                    <li class="breadcrumb-item"><a>Crear Usuario</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="addDocumento(documentoForm)">
+                  <label>Nombres</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nombre" ngModel required>
+                  </div>
+                  <label>Apellidos</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="apellido" ngModel required>
+                  </div>
+                  <label>Correo Electrónico</label>
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="correo" ngModel required>
+                  </div>
+                  <label>Teléfono</label>
+                  <div class="form-group">
+                    <input type="tel" class="form-control" name="telefono" ngModel required>
+                  </div>
+                  <label>Fecha de nacimiento</label>
+                  <div class="form-group">
+                    <input type="date" class="form-control" name="fecha_nacimiento" ngModel required>
+                  </div>           
+                  <label>Graduado de Académia</label> 
+                  <div class="form-group">
+                    <select name="graduado" class="form-control" ngModel required>
+                      <option value="true">Si</option>
+                      <option value="false">no</option>
+                    </select>
+                  </div>
+                  <label>Líder</label> 
+                  <div class="form-group">
+                    <select name="lider" class="form-control" ngModel required>
+                      <option value="true">Si</option>
+                      <option value="false">no</option>
+                    </select>
+                  </div>
+                  <label>Red a la que pertenece</label> 
+                  <div class="form-group">
+                    <select name="red" class="form-control" ngModel required>
+                      <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['descripcion']}}</option>
+                    </select>
+                  </div>
+                  <label>Discipulado al que pertenece</label> 
+                  <div class="form-group">
+                    <select name="discipulado" class="form-control" ngModel required>
+                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['discipulado']}}</option>
+                    </select>
+                  </div>
+                  <label>Grupo al que pertenece</label> 
+                  <div class="form-group">
+                    <select name="grupo" class="form-control" ngModel required>
+                      <option value="{{documento4.id}}" *ngFor="let documento4 of documentos4">{{documento4.data['nombre']}}</option>
+                    </select>
+                  </div>
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Usuario</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+  

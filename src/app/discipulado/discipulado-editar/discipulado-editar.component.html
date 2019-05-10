@@ -1,0 +1,55 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Editar Discipulado</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/discipulado']" routerLinkActive="active">Listado Discipulado</a></li>
+                    <li class="breadcrumb-item"><a>Editar Discipulado</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="updateDocumento()">
+
+                  <label>Nombre de discipulado</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="discipulado" [(ngModel)]="documento.data['discipulado']" required>
+                  </div>
+                  <label>Red a la que pertenece</label> 
+                  <div class="form-group">
+                    <select name="red" class="form-control" [(ngModel)]="documento.data['red']" required>
+                      <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['descripcion']}}</option>
+                    </select>
+                  </div>
+                  <label>Lideres que la conforman</label> 
+                  <div class="form-group">
+                    <select name="lideres" class="form-control" [(ngModel)]="documento.data['lideres']" required>
+                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['nombre']}} {{documento3.data['apellido']}}</option>
+                    </select>
+                  </div>
+                  <label>Direccion donde se realiza</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="direccion" [(ngModel)]="documento.data['direccion']" required>
+                  </div>
+                  <label>Zona ubicada</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="zona" [(ngModel)]="documento.data['zona']" required>
+                  </div>
+                  <label>Hora en que se realiza</label>
+                  <div class="form-group">
+                    <input type="time" class="form-control" name="hora" [(ngModel)]="documento.data['hora']" required>
+                  </div>
+
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Discipulado</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+</div>
+  
