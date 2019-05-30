@@ -1,0 +1,48 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Lista de Reportes</h4>
+          </div>
+          <div class="card-body ">
+            <div class="toolbar">
+              <button class="btn btn-primary" [routerLink]="['/crear-reporte-discipulado']">Crear Reporte</button>
+            </div>              
+            <div class="col-md-12">
+              <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th>Discipulado</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Asisitieron</th>                 
+                  <th class="text-right">Acción</th>
+                </tr>
+                <tr *ngFor="let documento of documentos">
+                    <td>{{documento.data['discipulado_nombre']}}</td>
+                    <td>{{documento.data['fecha']}}</td>
+                    <td>{{documento.data['hora']}}</td>
+                    <td>{{documento.data['asistieron']}}</td>                                      
+                    <td class="text-right">
+                      <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
+                          <i class="nc-icon nc-zoom-split"></i>
+                      </button>
+                      <button class="btn btn-info btn-sm acciontabla" (click)="asistencia(documento)">
+                        <i class="nc-icon nc-tap-01"></i>
+                    </button>
+                      <button class="btn btn-danger btn-sm acciontabla" (click)="deleteDocumento(documento)">
+                          <i class="nc-icon nc-simple-remove"></i>
+                        </button>
+                  </td>
+                </tr>
+              </table>
+              </div>
+            </div>
+  
+        </div>
+      </div>  
+    </div>
+  
+  </div>
+  

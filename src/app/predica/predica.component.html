@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Lista de Predicas</h4>
+          </div>
+          <div class="card-body ">
+            <div class="toolbar">
+              <button class="btn btn-primary" [routerLink]="['/crear-predica']">Crear Predica</button>
+            </div>              
+            <div class="col-md-12">
+              <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Mes</th>
+                  <th>Semana</th>
+                  <th class="text-right">Acción</th>
+                </tr>
+                <tr *ngFor="let documento of documentos">
+                    <td>{{documento.data['nombre']}}</td>
+                    <td>{{documento.data['mes']}}</td>
+                    <td>{{documento.data['semana']}}</td>
+                    <td class="text-right">
+                      <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
+                          <i class="nc-icon nc-zoom-split"></i>
+                      </button>
+                      <button class="btn btn-danger btn-sm acciontabla" (click)="deleteDocumento(documento)">
+                          <i class="nc-icon nc-simple-remove"></i>
+                        </button>
+                  </td>
+                </tr>
+              </table>
+              </div>
+            </div>
+  
+        </div>
+      </div>  
+    </div>
+  
+  </div>
+  

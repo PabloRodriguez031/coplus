@@ -19,6 +19,7 @@
                   <div class="form-group">
                     <input type="text" class="form-control" name="descripcion" [(ngModel)]="documento.data['descripcion']" required>
                   </div>
+                  <label>Iglesia a la que pertenece</label>
                   <div class="form-group">
                     <select name="iglesia" class="form-control" [(ngModel)]="documento.data['iglesia']" required>
                       <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['nombre']}}</option>

@@ -22,7 +22,6 @@ import { environment } from '../environments/environment';
 
 import { ApiService } from './servicios/api.service';
 
-
 @NgModule({
     imports:      [
         BrowserAnimationsModule,
@@ -40,7 +39,7 @@ import { ApiService } from './servicios/api.service';
     declarations: [
         AppComponent,
         AdminLayoutComponent,
-        AuthLayoutComponent     
+        AuthLayoutComponent
     ],
     providers: [ApiService],
     bootstrap:    [ AppComponent ]

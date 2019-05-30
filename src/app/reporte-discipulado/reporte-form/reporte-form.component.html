@@ -1,0 +1,47 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Nuevo Reporte</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/reporte-discipulado']" routerLinkActive="active">Listado Reportes</a></li>
+                    <li class="breadcrumb-item"><a>Crear Reporte</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="addDocumento(documentoForm)">
+                  <label>Discipulado</label>
+                  <div class="form-group">
+                    <select name="discipulado" class="form-control" ngModel required>
+                     <option value="{{discipulado.id}}" *ngFor="let discipulado of discipulados">{{discipulado.data['discipulado']}}</option>
+                    </select>
+                  </div>
+                  <label>Fecha</label>
+                  <div class="form-group">
+                    <input type="date" class="form-control" name="fecha" ngModel required>
+                  </div>  
+                  <label>Hora</label>
+                  <div class="form-group">
+                    <input type="time" class="form-control" name="hora" ngModel required>
+                  </div>  
+                    <label>Asistieron</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="asistieron" ngModel required>
+                    </div>  
+                    <label>Observaciones</label>
+                    <div class="form-group">
+                      <textarea name="observaciones" ngModel></textarea>
+                    </div>      
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Reporte</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+  

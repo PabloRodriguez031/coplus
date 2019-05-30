@@ -48,7 +48,7 @@ export class RedEditarComponent implements OnInit {
 
     updateDocumento(){      
       this.notificationsService.showConfirmationSwal().then(resultado => {
-        if(resultado){
+        if(resultado.value){
           this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
           this.apiService.updateDocumento(this.coleccion, {
             descripcion: this.documento.data['descripcion'],

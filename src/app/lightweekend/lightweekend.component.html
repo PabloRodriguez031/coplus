@@ -1,0 +1,76 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Formulario de asistencia a Light Weekend</h4>
+        </div>
+        <div class="card-body ">
+            <form #documentoForm="ngForm" (ngSubmit)="addDocumento(documentoForm)">
+              <label>Nombres</label>
+              <div class="form-group">
+                <input type="text" class="form-control" name="nombre" ngModel required>
+              </div>
+              <label>Apellidos</label>
+              <div class="form-group">
+                <input type="text" class="form-control" name="apellido" ngModel required>
+              </div>
+              <label>Edad</label>
+              <div class="form-group">
+                <input type="number" class="form-control" name="edad" ngModel required>
+              </div>
+              <label>Fecha de nacimiento</label>
+              <div class="form-group">
+                <input type="date" class="form-control" name="fecha_nacimiento" ngModel required>
+              </div> 
+              <label>Correo Electrónico</label>
+              <div class="form-group">
+                <input type="email" class="form-control" name="correo" ngModel required>
+              </div>
+              <label>Teléfono</label>
+              <div class="form-group">
+                <input type="tel" class="form-control" name="telefono" ngModel required>
+              </div>
+              <label>Género</label>
+              <div class="form-group">
+                <select name="genero"class="form-control" ngModel required>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                </select>            
+              </div>
+              <label>Estado civil</label>
+              <div class="form-group">
+                <select name="estado_civil"class="form-control" ngModel required>
+                    <option value="Soltero">Soltero</option>
+                    <option value="Casado">Casado</option>
+                    <option value="Viudo">Viudo</option>
+                    <option value="Divorsiado">Divorsiado</option>
+                  </select>   
+              </div> 
+              <label>Direccion</label>
+              <div class="form-group">
+                <input type="text" class="form-control" name="direccion" ngModel required>
+              </div>   
+              <label>¿Asiste a un grupo en casa?</label>
+              <div class="form-group">
+                <select name="asiste_grupo"class="form-control" ngModel required>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>            
+              </div>         
+              <label>Red a la que pertenece</label> 
+              <div class="form-group">
+                <select name="red" class="form-control" ngModel required>
+                  <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['descripcion']}}</option>
+                </select>
+              </div>
+              <div class="card-footer text-center">
+                  <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Enviar Información</button>
+                </div>
+            </form>    
+        </div>
+      </div>
+    </div>  
+  </div>
+
+</div>

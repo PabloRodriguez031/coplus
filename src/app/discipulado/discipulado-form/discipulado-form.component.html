@@ -23,10 +23,11 @@
                       <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['descripcion']}}</option>
                     </select>
                   </div>
-                  <label>Lideres que la conforman</label> 
+                  <label>¿A que discipulado pertenece el discipulado?</label> 
                   <div class="form-group">
-                    <select name="lideres" class="form-control" ngModel required>
-                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['nombre']}} {{documento3.data['apellido']}}</option>
+                    <select name="discipuladoPadre" class="form-control" ngModel required>
+                      <option>-</option>
+                      <option value="{{documento.id}}" *ngFor="let documento of documentos">{{documento.data['discipulado']}}</option>
                     </select>
                   </div>
                   <label>Direccion donde se realiza</label>

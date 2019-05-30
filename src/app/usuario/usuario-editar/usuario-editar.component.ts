@@ -74,7 +74,7 @@ export class UsuarioEditarComponent implements OnInit {
 
     updateDocumento(){      
       this.notificationsService.showConfirmationSwal().then(resultado => {
-        if(resultado){
+        if(resultado.value){
           this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
           this.apiService.updateDocumento(this.coleccion, {
             nombre: this.documento.data['nombre'],
@@ -83,10 +83,7 @@ export class UsuarioEditarComponent implements OnInit {
             telefono: this.documento.data['telefono'],
             fecha_nacimiento: this.documento.data['fecha_nacimiento'],
             graduado: this.documento.data['graduado'],
-            lider: this.documento.data['lider'],
-            red: this.documento.data['red'],
-            discipulado: this.documento.data['discipulado'],
-            grupo: this.documento.data['grupo'],
+            red: this.documento.data['red']
           }, this.documento.id).then(respuesta => {
             this.notificationsService.showSwal('Editado', 'La red ha sido editada con éxito', 'success');
           }).catch(error => {

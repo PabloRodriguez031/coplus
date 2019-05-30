@@ -1,0 +1,49 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Lista de Planificaciones</h4>
+          </div>
+          <div class="card-body ">
+            <div class="toolbar">
+              <button class="btn btn-primary" [routerLink]="['/crear-planificacion-grupo']">Crear Planificación</button>
+            </div>              
+            <div class="col-md-12">
+              <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th>Tema</th>
+                  <th>Fecha</th>
+                  <th>Grupo</th>
+                  <th>Predicador</th>
+                  <th>Bienvenida y visión</th>
+                  <th>Ofrenda</th>
+                  <th class="text-right">Acción</th>
+                </tr>
+                <tr *ngFor="let documento of documentos">
+                    <td>{{documento.data['predica_nombre']}}</td>
+                    <td>{{documento.data['fecha']}}</td>
+                    <td>{{documento.data['grupo_nombre']}}</td>
+                    <td>{{documento.data['predicador_nombre']}} {{documento.data['predicador_apellido']}}</td>
+                    <td>{{documento.data['bienvenida_vision_nombre']}} {{documento.data['bienvenida_vision_apellido']}}</td>
+                    <td>{{documento.data['ofrenda_nombre']}} {{documento.data['ofrenda_apellido']}}</td>
+                    <td class="text-right">
+                      <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
+                          <i class="nc-icon nc-zoom-split"></i>
+                      </button>
+                      <button class="btn btn-danger btn-sm acciontabla" (click)="deleteDocumento(documento)">
+                          <i class="nc-icon nc-simple-remove"></i>
+                        </button>
+                  </td>
+                </tr>
+              </table>
+              </div>
+            </div>
+  
+        </div>
+      </div>  
+    </div>
+  
+  </div>
+  

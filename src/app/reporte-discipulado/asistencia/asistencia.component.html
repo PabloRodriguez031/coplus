@@ -1,0 +1,40 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Lista de Asistencia Discipulado</h4>
+        </div>
+        <div class="card-body "> 
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a [routerLink]="['/reporte-discipulado']" routerLinkActive="active">Listado Reportes</a></li>
+                  <li class="breadcrumb-item"><a>Tomar Asistencia</a></li>
+                </ol>
+              </nav>           
+          <div class="col-md-12">
+            <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th>Nombre</th>
+                <th>Fecha de Asistencia</th>        
+                <th class="text-right">Acción</th>
+              </tr>
+              <tr>
+                  <td>Pablo Rodriguez</td>
+                  <td>28-may-2019</td>                                     
+                  <td class="text-right">
+                    <button class="btn btn-success btn-sm acciontabla" (click)="marcarAsistencia(documento)">
+                      Tomar asistencia <i class="nc-icon nc-check-2"></i> 
+                    </button>                  
+                </td>
+              </tr>
+            </table>
+            </div>
+          </div>
+
+      </div>
+    </div>  
+  </div>
+
+</div>

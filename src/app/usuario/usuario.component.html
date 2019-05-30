@@ -17,11 +17,8 @@
                         <th>Correo</th>
                         <th>Teléfono</th>
                         <th>Fecha de Nacimiento</th>                  
-                        <th>Lider</th>
                         <th>Graduado</th>
                         <th>Red</th>                
-                        <th>Discipulado</th>
-                        <th>Grupo</th>
                         <th class="text-right">Acción</th>
                       </tr>
                       <tr *ngFor="let documento of documentos">
@@ -29,12 +26,8 @@
                         <td>{{documento.data['correo']}}</td>
                         <td>{{documento.data['telefono']}}</td>
                         <td>{{documento.data['fecha_nacimiento']}}</td>
-                        <td>{{documento.data['lider']}}</td>
                         <td>{{documento.data['graduado']}}</td>
-                        <td>{{documento.data['descripcion']}}</td>
-                        <td>{{documento.data['red']}}</td>
-                        <td>{{documento.data['discipulado']}}</td>                        
-                        <td>{{documento.data['grupo']}}</td>                        
+                        <td>{{documento.data['red_nombre']}}</td>
                         <td class="text-right">
                             <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
                                 <i class="nc-icon nc-zoom-split"></i>

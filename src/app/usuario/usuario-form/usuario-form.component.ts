@@ -61,7 +61,7 @@ export class UsuarioFormComponent implements OnInit {
 
   addDocumento(form:NgForm) {  
     this.notificationsService.showConfirmationSwal().then(resultado => {
-      if(resultado){
+      if(resultado.value){
         this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
         this.apiService.addDocumento(this.coleccion, {
           nombre: form.value.nombre,
@@ -70,13 +70,20 @@ export class UsuarioFormComponent implements OnInit {
           telefono: form.value.telefono,
           fecha_nacimiento: form.value.fecha_nacimiento,
           graduado: form.value.graduado,
-          lider: form.value.lider,
           red: form.value.red,
-          discipulado: form.value.discipulado,
-          grupo: form.value.grupo
+          estudiantesIds: '',
+          grupoId: '',
+          discipuloId: '',      
+          liderDiscipuladoId: '',
+          liderGrupoId: '',
+          liderAcademiaId: ''             
+        }).then(respuesta =>{
+          this.notificationsService.showSwal('Creado', 'El usuario ha sido creado con éxito', 'success');
+          form.resetForm();
+        }).catch(error =>{
+          console.log(error);
+          this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
         });
-        form.resetForm();
-        this.notificationsService.showSwal('Creado', 'El usuario ha sido creado con éxito', 'success');
       }
     });
   }

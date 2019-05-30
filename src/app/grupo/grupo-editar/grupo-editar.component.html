@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Editar Grupo</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/grupo']" routerLinkActive="active">Listado Grupos</a></li>
+                    <li class="breadcrumb-item"><a>Editar Grupos</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="updateDocumento()">
+
+                  <label>Nombre de grupo</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="documento.data['nombre']" required>
+                  </div>
+                  <label>Red a la que pertenece</label> 
+                  <div class="form-group">
+                    <select class="form-control" name="red" [(ngModel)]="documento.data['red']" required>
+                      <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['descripcion']}}</option>
+                    </select>
+                  </div>
+                  <label>Discipulado al que pertenece</label> 
+                  <div class="form-group">
+                    <select name="discipulado" class="form-control" [(ngModel)]="documento.data['discipulado']" required>
+                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['discipulado']}}</option>
+                    </select>
+                  </div>
+                  <label>Día en que se realiza</label>
+                  <div class="form-group">                    
+                    <select class="form-control" name="dia" [(ngModel)]="documento.data['dia']" required>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miércoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sabado">Sábado</option>
+                        <option value="Domingo">Domingo</option>
+                      </select>
+                  </div>   
+                  <label>Direccion donde se realiza</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="direccion" [(ngModel)]="documento.data['direccion']" required>
+                  </div>
+                  <label>Zona ubicada</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="zona" [(ngModel)]="documento.data['zona']" required>
+                  </div>
+                  <label>Hora en que se realiza</label>
+                  <div class="form-group">
+                    <input type="time" class="form-control" name="hora" [(ngModel)]="documento.data['hora']" required>
+                  </div>
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Grupo</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+</div>
+  

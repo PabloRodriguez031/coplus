@@ -17,12 +17,20 @@ export class DiscipuladoFormComponent implements OnInit {
   documentos2 = {} as any;
   coleccion2 = 'red';
 
-  documentos3 = {} as any;
-  coleccion3 = 'usuario';
-
   constructor(public apiService: ApiService, private notificationsService: NotificationsService) { }
 
   ngOnInit() {
+
+    firebase.firestore().collection(this.coleccion).onSnapshot((snapshot) => {
+      this.documentos = [] as any;
+      snapshot.forEach(doc => {
+          this.documentos.push({
+              id: doc.id,
+              data: doc.data()
+          });
+      });
+    });
+
     firebase.firestore().collection(this.coleccion2).onSnapshot((snapshot) => {
       this.documentos2 = [] as any;
       snapshot.forEach(doc => {
@@ -32,32 +40,28 @@ export class DiscipuladoFormComponent implements OnInit {
           });
       });
     });
-
-    firebase.firestore().collection(this.coleccion3).onSnapshot((snapshot) => {
-      this.documentos3 = [] as any;
-      snapshot.forEach(doc => {
-          this.documentos3.push({
-              id: doc.id,
-              data: doc.data()
-          });
-      });
-    });
   }
 
   addDocumento(form:NgForm) {  
     this.notificationsService.showConfirmationSwal().then(resultado => {
-      if(resultado){
+      if(resultado.value){
         this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
         this.apiService.addDocumento(this.coleccion, {
           discipulado: form.value.discipulado,
           red: form.value.red,
-          lideres: form.value.lideres,
           direccion: form.value.direccion,
           zona: form.value.zona,
-          hora: form.value.hora
+          hora: form.value.hora,
+          discipuladoPadre: form.value.discipuladoPadre,
+          discipulosIds: [],
+          lideresIds: []
+        }).then(respuesta => {
+          this.notificationsService.showSwal('Creado', 'El discipulado ha sido creado con éxito', 'success');
+          form.resetForm();
+        }).catch(error => {
+          console.log(error);
+          this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
         });
-        form.resetForm();
-        this.notificationsService.showSwal('Creado', 'El discipulado ha sido creado con éxito', 'success');
       }
     });
   }

@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { AcademiaComponent } from './academia.component';
 import { AcademiaRoutes } from './academia.routing';
 import { AcademiaFormComponent } from './academia-form/academia-form.component';
+import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
+import { AcademiaEditarComponent } from './academia-editar/academia-editar.component';
+import { NotasComponent } from './notas/notas.component';
 
 @NgModule({
     imports: [
@@ -13,7 +16,7 @@ import { AcademiaFormComponent } from './academia-form/academia-form.component';
         RouterModule.forChild(AcademiaRoutes),
         FormsModule
     ],
-    declarations: [AcademiaComponent, AcademiaFormComponent]
+    declarations: [AcademiaComponent, AcademiaFormComponent, AgregarUsuarioComponent, AcademiaEditarComponent, NotasComponent]
 })
 
 export class AcademiaModule {}

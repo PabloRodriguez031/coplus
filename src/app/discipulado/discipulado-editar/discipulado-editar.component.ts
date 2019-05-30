@@ -17,9 +17,6 @@ export class DiscipuladoEditarComponent implements OnInit {
   documentos2 = {} as any;
   coleccion2 = 'red';
 
-  documentos3 = {} as any;
-  coleccion3 = 'usuario';
-
   constructor(private route: ActivatedRoute, private apiService: ApiService, private notificationsService: NotificationsService) { }
 
   ngOnInit() {
@@ -47,27 +44,15 @@ export class DiscipuladoEditarComponent implements OnInit {
             });
         });
       });
-
-      firebase.firestore().collection(this.coleccion3).onSnapshot((snapshot) => {
-        this.documentos3 = [] as any;
-        snapshot.forEach(doc => {
-            this.documentos3.push({
-                id: doc.id,
-                data: doc.data()
-            });
-        });
-      });
-
     }
 
     updateDocumento(){      
       this.notificationsService.showConfirmationSwal().then(resultado => {
-        if(resultado){
+        if(resultado.value){
           this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
           this.apiService.updateDocumento(this.coleccion, {
             discipulado: this.documento.data['discipulado'],
             red: this.documento.data['red'],
-            lideres: this.documento.data['lideres'],
             direccion: this.documento.data['direccion'],
             zona: this.documento.data['zona'],
             hora: this.documento.data['hora']

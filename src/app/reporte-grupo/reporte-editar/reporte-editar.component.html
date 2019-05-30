@@ -1,0 +1,61 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Editar Reporte</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/reporte-grupo']" routerLinkActive="active">Listado Reportes</a></li>
+                    <li class="breadcrumb-item"><a>Editar Reporte</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="updateDocumento()">
+                  <label>Grupo</label>
+                  <div class="form-group">
+                    <select name="grupo" class="form-control" [(ngModel)]="documento.data['grupo']" required>
+                     <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['nombre']}}</option>
+                    </select>
+                  </div>
+                  <label>Tema</label>
+                  <div class="form-group">
+                      <select name="tema" class="form-control" [(ngModel)]="documento.data['tema']" required>
+                        <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['nombre']}}</option>
+                      </select>
+                    </div>
+                    <label>Asistieron</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="asistieron" [(ngModel)]="documento.data['asistieron']" required>
+                    </div> 
+                    <label>Nuevos</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="nuevos" [(ngModel)]="documento.data['nuevos']" required>
+                    </div>  
+                    <label>Convertidos</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="convertidos" [(ngModel)]="documento.data['convertidos']" required>
+                    </div>  
+                    <label>Reconciliados</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="reconciliados" [(ngModel)]="documento.data['reconciliados']" required>
+                    </div>  
+                    <label>Ofrendas</label>
+                    <div class="form-group">                    
+                      <input type="number" class="form-control col-md-3" name="ofrendas" [(ngModel)]="documento.data['ofrendas']" required>
+                    </div>  
+                    <label>Observaciones</label>
+                    <div class="form-group">
+                      <textarea name="observaciones" ngModel></textarea>
+                    </div>   
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Grupo</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+</div>
+  

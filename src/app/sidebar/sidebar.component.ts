@@ -54,6 +54,36 @@ export const ROUTES: RouteInfo[] = [{
         title: 'Grupos',
         type: 'link',
         icontype: 'nc-icon nc-shop'
+    },{
+        path: '/predica',
+        title: 'Predicas',
+        type: 'link',
+        icontype: 'nc-icon nc-box'
+    },{
+        path: '/planificacion-grupo',
+        title: 'Planificacion grupos',
+        type: 'link',
+        icontype: 'nc-icon nc-calendar-60'
+    },{
+        path: '/reporte-grupo',
+        title: 'Reporte grupos',
+        type: 'link',
+        icontype: 'nc-icon nc-ruler-pencil'
+    },{
+        path: '/reporte-discipulado',
+        title: 'Reporte discipulados',
+        type: 'link',
+        icontype: 'nc-icon nc-ruler-pencil'
+    },{
+        path: '/panel-lightweekend',
+        title: 'Panel Lightweekend',
+        type: 'link',
+        icontype: 'nc-icon nc-bulb-63'
+    },{
+        path: '/lightweekend',
+        title: 'Lightweekend',
+        type: 'link',
+        icontype: 'nc-icon nc-bulb-63'
     }
 ];
 

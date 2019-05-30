@@ -15,15 +15,14 @@ export class ApiService {
 
     getDocumentoById(coleccion: string, id){
         return firebase.firestore().collection(coleccion).doc(id).get();
-
-    }
+    }    
 
     addDocumento(coleccion: string, documento: any) {
-        firebase.firestore().collection(coleccion).doc().set(documento);
+        return firebase.firestore().collection(coleccion).doc().set(documento);
     }
 
     deleteDocumento(coleccion: string, documento: any) {
-        firebase.firestore().collection(coleccion).doc(documento.id).delete();        
+        return firebase.firestore().collection(coleccion).doc(documento.id).delete();        
     } 
 
     updateDocumento(coleccion: string, documento: any, id) {        

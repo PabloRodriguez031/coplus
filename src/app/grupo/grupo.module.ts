@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { GrupoComponent } from './grupo.component';
 import { GrupoRoutes } from './grupo.routing';
 import { GrupoFormComponent } from './grupo-form/grupo-form.component';
+import { GrupoEditarComponent } from './grupo-editar/grupo-editar.component';
+import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
 
 @NgModule({
     imports: [
@@ -13,7 +15,7 @@ import { GrupoFormComponent } from './grupo-form/grupo-form.component';
         RouterModule.forChild(GrupoRoutes),
         FormsModule
     ],
-    declarations: [GrupoComponent, GrupoFormComponent]
+    declarations: [GrupoComponent, GrupoFormComponent, GrupoEditarComponent, AgregarUsuarioComponent]
 })
 
 export class GrupoModule {}

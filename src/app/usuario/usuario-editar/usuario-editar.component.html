@@ -34,38 +34,19 @@
                   <div class="form-group">
                     <input type="date" class="form-control" name="fecha_nacimiento" [(ngModel)]="documento.data['fecha_nacimiento']" required>
                   </div>           
-                  <label>Graduado de Académia</label> 
+                  <label>¿Es lider?</label> 
                   <div class="form-group">
                     <select name="graduado" class="form-control" [(ngModel)]="documento.data['graduado']" required>
-                      <option value="true">Si</option>
-                      <option value="false">no</option>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
                     </select>
-                  </div>
-                  <label>Líder</label> 
-                  <div class="form-group">
-                    <select name="lider" class="form-control" [(ngModel)]="documento.data['lider']" required>
-                      <option value="true">Si</option>
-                      <option value="false">no</option>
-                    </select>
-                  </div>
+                  </div>                
                   <label>Red a la que pertenece</label> 
                   <div class="form-group">
                     <select name="red" class="form-control" [(ngModel)]="documento.data['red']" required>
                       <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['descripcion']}}</option>
                     </select>
-                  </div>
-                  <label>Discipulado al que pertenece</label> 
-                  <div class="form-group">
-                    <select name="discipulado" class="form-control" [(ngModel)]="documento.data['discipulado']" required>
-                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['discipulado']}}</option>
-                    </select>
-                  </div>
-                  <label>Grupo al que pertenece</label> 
-                  <div class="form-group">
-                    <select name="grupo" class="form-control" [(ngModel)]="documento.data['grupo']" required>
-                      <option value="{{documento4.id}}" *ngFor="let documento4 of documentos4">{{documento4.data['nombre']}}</option>
-                    </select>
-                  </div>
+                  </div>                  
                   <div class="card-footer text-center">
                       <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Usuario</button>
                     </div>

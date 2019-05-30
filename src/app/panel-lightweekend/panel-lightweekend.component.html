@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Lista de Grupos</h4>
+          </div>
+          <div class="card-body ">              
+            <div class="col-md-12">
+              <div class="table-responsive">
+                  <table class="table">
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Género</th>                  
+                        <th>Estado Civil</th>
+                        <th>Dirección</th>
+                        <th>Fecha</th>
+                        <th>Asiste a grupo</th>
+                        <th>Red</th>
+                        <th class="text-right">Acción</th>
+                      </tr>
+                      <tr *ngFor="let documento of documentos">
+                        <td>{{documento.data['nombre']}}</td>
+                        <td>{{documento.data['apellido']}}</td>
+                        <td>{{documento.data['edad']}}</td>
+                        <td>{{documento.data['correo']}}</td>
+                        <td>{{documento.data['telefono']}}</td>
+                        <td>{{documento.data['genero']}}</td>
+                        <td>{{documento.data['estado_civil']}}</td>
+                        <td>{{documento.data['direccion']}}</td>
+                        <td>{{documento.data['fecha']}}</td>
+                        <td>{{documento.data['asiste_grupo']}}</td>
+                        <td>{{documento.data['red_nombre']}}</td>
+                        <td class="text-right">
+                            <button class="btn btn-info btn-sm acciontabla" (click)="enviarCorreo(documento.data['correo'])">
+                                <i class="nc-icon nc-share-66"></i>
+                            </button>
+                        </td>
+                      </tr>
+                    </table>
+              </div>
+            </div>
+  
+        </div>
+      </div>  
+    </div>
+  
+  </div>
+  

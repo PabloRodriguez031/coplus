@@ -1,0 +1,60 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Editar Planificación</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/planificacion-grupo']" routerLinkActive="active">Listado Planificaciones</a></li>
+                    <li class="breadcrumb-item"><a>Editar Planificación</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="updateDocumento()">
+
+                  <label>Tema</label>
+                  <div class="form-group">
+                      <select name="tema" class="form-control" [(ngModel)]="documento.data['tema']" required>
+                        <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['nombre']}}</option>
+                      </select>
+                    </div>
+                  <label>Fecha</label>
+                  <div class="form-group">
+                    <input type="date" class="form-control" name="fecha" [(ngModel)]="documento.data['fecha']" required>
+                  </div>
+                  <label>Grupos al que pertenece</label> 
+                  <div class="form-group">
+                    <select name="grupo" class="form-control" [(ngModel)]="documento.data['grupo']" required>
+                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['nombre']}}</option>
+                    </select>
+                  </div>
+                  <label>Predicador</label> 
+                  <div class="form-group">
+                    <select name="predicador" class="form-control" [(ngModel)]="documento.data['predicador']" required>
+                        <option value="{{documento4.id}}" *ngFor="let documento4 of documentos4">{{documento4.data['nombre']}} {{documento4.data['apellido']}}</option>
+                    </select>
+                  </div>
+                  <label>Bienvenida y visión</label> 
+                  <div class="form-group">
+                    <select name="bienvenida_vision" class="form-control" [(ngModel)]="documento.data['bienvenida_vision']" required>
+                        <option value="{{documento4.id}}" *ngFor="let documento4 of documentos4">{{documento4.data['nombre']}} {{documento4.data['apellido']}}</option> 
+                      </select>
+                  </div>
+                  <label>Ofrenda</label> 
+                  <div class="form-group">
+                    <select name="ofrenda" class="form-control" [(ngModel)]="documento.data['ofrenda']" required>
+                        <option value="{{documento4.id}}" *ngFor="let documento4 of documentos4">{{documento4.data['nombre']}} {{documento4.data['apellido']}}</option>              
+                      </select>
+                  </div>
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Grupo</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+</div>
+  

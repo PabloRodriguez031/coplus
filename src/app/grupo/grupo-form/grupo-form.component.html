@@ -1,40 +1,65 @@
-<form>
-  <label>Red a la que pertenece</label>
-  <div class="form-group">
-  <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Red">
-    <option value="red01">Pre Juvenil</option>
-    <option value="red02">Jóvenes</option>
-  </select>
-  </div>
-  <label>Lideres a cargo</label>
-  <div class="form-group">
-    <input type="text" class="form-control">
-  </div>
-  <label>Discipulado a cargo</label>
-  <div class="form-group">
-    <input type="text" class="form-control">
-  </div>
-  <label>Nombre del Grupo</label>
-  <div class="form-group">
-    <input type="text" class="form-control">
-  </div>
-  <label>Día a realizar</label>
-  <div class="form-group">
-    <input type="email" class="form-control">
-  </div>
-  <label>Dirección</label>
-  <div class="form-group">
-    <input type="tel" class="form-control">
-  </div>
-  <label>Zona</label>
-  <div class="form-group">
-    <input type="text" class="form-control">
-  </div>
-  <label>Hora a realizar</label>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Ej: 16:00">
-  </div>
-    <div class="card-footer text-center">
-        <button type="submit" class="btn btn-info btn-round">Agregar Academia</button>
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Nuevo Grupo</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/grupo']" routerLinkActive="active">Listado Grupos</a></li>
+                    <li class="breadcrumb-item"><a>Crear Grupo</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="addDocumento(documentoForm)">
+                  <label>Nombre de Grupo</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nombre" ngModel required>
+                  </div>
+                  <label>Red a la que pertenece</label> 
+                  <div class="form-group">
+                    <select name="red" class="form-control" ngModel required>
+                      <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['descripcion']}}</option>
+                    </select>
+                  </div>
+                  <label>Discipulado al que pertenece</label> 
+                  <div class="form-group">
+                    <select name="discipulado" class="form-control" ngModel required>
+                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['discipulado']}}</option>
+                    </select>
+                  </div>     
+                  <label>Día en que se realiza</label>
+                  <div class="form-group">                    
+                    <select class="form-control" name="dia" ngModel required>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miércoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sabado">Sábado</option>
+                        <option value="Domingo">Domingo</option>
+                      </select>
+                  </div>                  
+                  <label>Direccion donde se realiza</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="direccion" ngModel required>
+                  </div>
+                  <label>Zona ubicada</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="zona" ngModel required>
+                  </div>
+                  <label>Hora en que se realiza</label>
+                  <div class="form-group">
+                    <input type="time" class="form-control" name="hora" ngModel required>
+                  </div>                             
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Grupo</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
       </div>
-</form>
+    </div>
+  </div>
+  

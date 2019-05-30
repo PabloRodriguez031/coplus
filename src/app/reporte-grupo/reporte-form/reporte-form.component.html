@@ -1,0 +1,61 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Nuevo Reporte</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/reporte-grupo']" routerLinkActive="active">Listado Reportes</a></li>
+                    <li class="breadcrumb-item"><a>Crear Reporte</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="addDocumento(documentoForm)">
+                  <label>Grupo</label>
+                  <div class="form-group">
+                    <select name="grupo" class="form-control" ngModel required>
+                     <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['nombre']}}</option>
+                    </select>
+                  </div>
+                  <label>Tema el cual desea reportar</label>
+                  <div class="form-group">
+                    <select name="tema" class="form-control" ngModel required>
+                     <option value="{{documento2.data['tema']}}" *ngFor="let documento2 of documentos2">{{documento2.data['fecha']}} - {{documento2.data['tema_nombre']}}</option>
+                    </select>
+                  </div>
+                    <label>Asistieron</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="asistieron" ngModel required>
+                    </div> 
+                    <label>Nuevos</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="nuevos" ngModel required>
+                    </div>  
+                    <label>Convertidos</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="convertidos" ngModel required>
+                    </div>  
+                    <label>Reconciliados</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="reconciliados" ngModel required>
+                    </div>  
+                    <label>Ofrendas</label>
+                    <div class="form-group">                    
+                      <input type="number" class="form-control col-md-3" name="ofrendas" ngModel required>
+                    </div>  
+                    <label>Observaciones</label>
+                    <div class="form-group">
+                      <textarea name="observaciones" ngModel></textarea>
+                    </div>      
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Reporte</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+  

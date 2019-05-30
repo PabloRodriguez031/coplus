@@ -31,6 +31,24 @@ export const AppRoutes: Routes = [{
         },{
             path: '',
             loadChildren: './grupo/grupo.module#GrupoModule'
+        },{
+            path: '',
+            loadChildren: './predica/predica.module#PredicaModule'
+        },{
+            path: '',
+            loadChildren: './planificacion-grupo/planificacion-grupo.module#PlanificacionGrupoModule'
+        },{
+            path: '',
+            loadChildren: './reporte-grupo/reporte-grupo.module#ReporteGrupoModule'
+        },{
+            path: '',
+            loadChildren: './reporte-discipulado/reporte-discipulado.module#ReporteDiscipuladoModule'
+        },{
+            path: '',
+            loadChildren: './panel-lightweekend/panel-lightweekend.module#PanellightweekendModule'
+        },{
+            path: '',
+            loadChildren: './lightweekend/lightweekend.module#LightweekendModule'
         }]
         },{
             path: '',

@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Ingreso de Notas Academias</h4>
+          </div>
+          <div class="card-body ">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/academia']" routerLinkActive="active">Listado Academias</a></li>
+                    <li class="breadcrumb-item"><a>Ingreso de Notas Academia</a></li>
+                  </ol>
+                </nav>             
+            <div class="col-md-12">
+              <div class="table-responsive">
+                  <table class="table">
+                      <tr>
+                        <th>Estudiante</th>
+                        <th>Nota</th>
+                        <th class="text-right">Acción</th>
+                      </tr>
+
+                      <tr *ngFor="let usuarioAcademia of usuariosAcademia">
+                        <td>{{usuarioAcademia.data['nombre']}} {{usuarioAcademia.data['apellido']}}</td>
+                        <td> <input type="text" name="nota" ngModel #nota = "ngModel"> </td>
+                          <td class="text-right">
+                              <button class="btn btn-success btn-sm acciontabla" (click)="ingresarNota(usuarioAcademia.id, nota.value)">
+                                  <i class="nc-icon nc-check-2"></i>
+                              </button>
+                          </td>
+                        </tr>
+
+                    </table>
+              </div>
+            </div>
+  
+        </div>
+      </div>  
+    </div>
+  
+  </div>
+  

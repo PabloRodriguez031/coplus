@@ -7,6 +7,7 @@ import { DiscipuladoComponent } from './discipulado.component';
 import { DiscipuladoRoutes } from './discipulado.routing';
 import { DiscipuladoFormComponent } from './discipulado-form/discipulado-form.component';
 import { DiscipuladoEditarComponent } from './discipulado-editar/discipulado-editar.component';
+import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
 
 @NgModule({
     imports: [
@@ -14,7 +15,7 @@ import { DiscipuladoEditarComponent } from './discipulado-editar/discipulado-edi
         RouterModule.forChild(DiscipuladoRoutes),
         FormsModule
     ],
-    declarations: [DiscipuladoComponent, DiscipuladoFormComponent, DiscipuladoEditarComponent]
+    declarations: [DiscipuladoComponent, DiscipuladoFormComponent, DiscipuladoEditarComponent, AgregarUsuarioComponent]
 })
 
 export class DiscipuladoModule {}

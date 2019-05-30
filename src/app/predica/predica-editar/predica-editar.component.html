@@ -1,0 +1,54 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Editar Predica</h4>
+          </div>
+          <div class="card-body">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/predica']" routerLinkActive="active">Listado Predicas</a></li>
+                    <li class="breadcrumb-item"><a>Editar Predica</a></li>
+                  </ol>
+                </nav>
+              <form #documentoForm="ngForm" (ngSubmit)="updateDocumento()">
+                  <label>Nombre de la predica</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="documento.data['nombre']" required>
+                  </div>
+                  <label>Mes al cual corresponde</label>
+                  <div class="form-group">
+                    <select class="form-control" name="mes" [(ngModel)]="documento.data['mes']" required>
+                      <option value="Enero">Enero</option>
+                      <option value="Febrero">Febrero</option>
+                      <option value="Marzo">Marzo</option>
+                      <option value="Abril">Abril</option>
+                      <option value="Mayo">Mayo</option>
+                      <option value="Junio">Junio</option>
+                      <option value="Julio">Julio</option>
+                      <option value="Agosto">Agosto</option>
+                      <option value="Septiembre">Septiembre</option>
+                      <option value="Octubre">Octubre</option>
+                      <option value="Noviembre">Noviembre</option>
+                      <option value="Diciembre">Diciembre</option>
+                    </select>
+                  </div>
+                  <label>Semana</label>
+                  <div class="form-group">
+                    <input type="number" class="form-control" name="semana" [(ngModel)]="documento.data['semana']" required>
+                  </div>
+                  <label>Versiculos</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="versiculos" [(ngModel)]="documento.data['versiculos']" required>
+                  </div>
+                  <div class="card-footer text-center">
+                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Predica</button>
+                    </div>
+                </form>                
+          </div>  
+        </div>
+      </div>
+    </div>
+</div>
+  
