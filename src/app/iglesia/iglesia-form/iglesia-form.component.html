@@ -17,6 +17,18 @@
                   <div class="form-group">
                     <input type="text" class="form-control" name="nombre" ngModel required>
                   </div>
+                  <label>Encargado</label>
+                  <div class="form-group">
+
+                      <ng-select [items]="usuarios"
+                      bindLabel="data.nombre"
+                      bindValue="id"
+                      ngModel
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="encargadoIglesia">
+                      </ng-select>
+                      
+                  </div>
                   <div class="card-footer text-center">
                       <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Iglesia</button>
                     </div>

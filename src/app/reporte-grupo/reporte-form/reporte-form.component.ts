@@ -25,6 +25,12 @@ export class ReporteFormComponent implements OnInit {
   temas :any = []; 
   nombres :any = []; 
 
+  val1:number;
+  val2:number;
+  val3:number;
+  total:number;
+  resultado:number;
+
   constructor(public apiService: ApiService, private notificationsService: NotificationsService) { }
 
   ngOnInit() {
@@ -72,22 +78,30 @@ export class ReporteFormComponent implements OnInit {
     this.notificationsService.showConfirmationSwal().then(resultado => {
       if(resultado.value){
         this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
-        this.apiService.addDocumento(this.coleccion, {
-          grupo: form.value.grupo,
-          tema: form.value.tema,
-          asistieron: form.value.asistieron,
-          nuevos: form.value.nuevos,
-          convertidos: form.value.convertidos,
-          reconciliados: form.value.reconciliados,
-          ofrendas: form.value.ofrendas,
-          observaciones: form.value.observaciones
-        }).then(respuesta => {
-          this.notificationsService.showSwal('Creado', 'El reporte ha sido creada con éxito', 'success');
-          form.resetForm();
-        }).catch(error => {
-          console.log(error);
-          this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
-        });
+        this.resultado = this.val1 + this.val2 + this.val3;
+
+        if(this.resultado < this.total){
+          this.apiService.addDocumento(this.coleccion, {
+            grupo: form.value.grupo,
+            tema: form.value.tema,
+            asistieron: form.value.asistieron,
+            nuevos: form.value.nuevos,
+            convertidos: form.value.convertidos,
+            reconciliados: form.value.reconciliados,
+            ofrendas: form.value.ofrendas,
+            observaciones: form.value.observaciones,
+            fecha: form.value.fecha
+          }).then(respuesta => {
+            this.notificationsService.showSwal('Creado', 'El reporte ha sido creada con éxito', 'success');
+            form.resetForm();
+          }).catch(error => {
+            console.log(error);
+            this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
+          });
+        }else{
+          this.notificationsService.showSwal('Ha ocurrido un error', 'La sumatoria de nuevos, convertidos y reconciliados no puede ser mayor a la cantidad que asistieron', 'error');
+        }
+
       }
     });
   }

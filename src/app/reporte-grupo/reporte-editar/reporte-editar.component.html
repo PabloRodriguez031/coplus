@@ -27,27 +27,27 @@
                     </div>
                     <label>Asistieron</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" name="asistieron" [(ngModel)]="documento.data['asistieron']" required>
+                      <input type="number" class="form-control" min="0" name="asistieron" [(ngModel)]="documento.data['asistieron']" required>
                     </div> 
                     <label>Nuevos</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" name="nuevos" [(ngModel)]="documento.data['nuevos']" required>
+                      <input type="number" class="form-control" min="0" name="nuevos" [(ngModel)]="documento.data['nuevos']" required>
                     </div>  
                     <label>Convertidos</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" name="convertidos" [(ngModel)]="documento.data['convertidos']" required>
+                      <input type="number" class="form-control" min="0" name="convertidos" [(ngModel)]="documento.data['convertidos']" required>
                     </div>  
                     <label>Reconciliados</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" name="reconciliados" [(ngModel)]="documento.data['reconciliados']" required>
+                      <input type="number" class="form-control" min="0" name="reconciliados" [(ngModel)]="documento.data['reconciliados']" required>
                     </div>  
                     <label>Ofrendas</label>
                     <div class="form-group">                    
-                      <input type="number" class="form-control col-md-3" name="ofrendas" [(ngModel)]="documento.data['ofrendas']" required>
+                      <input type="number" class="form-control col-md-3" min="0" name="ofrendas" [(ngModel)]="documento.data['ofrendas']" required>
                     </div>  
                     <label>Observaciones</label>
                     <div class="form-group">
-                      <textarea name="observaciones" ngModel></textarea>
+                      <textarea name="observaciones" ngModel class="form-control"></textarea>
                     </div>   
                   <div class="card-footer text-center">
                       <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Grupo</button>

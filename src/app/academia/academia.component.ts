@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ApiService } from '../servicios/api.service';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { NotificationsService } from 'app/servicios/notifications.service';
+import { Subject } from 'rxjs';
+import {DataTableDirective} from 'angular-datatables';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-academia',
@@ -11,14 +14,23 @@ import { NotificationsService } from 'app/servicios/notifications.service';
 })
 export class AcademiaComponent implements OnInit {
 
+  @ViewChild(DataTableDirective) dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<boolean> = new Subject();
+
   documentos :any = []; 
   coleccion = 'academia';
 
   redes :any = [];
 
+  isLoading = false;
+
   constructor(public apiService: ApiService, private router: Router, private notificationsService: NotificationsService ) { }
 
   ngOnInit() {
+
+    this.dtOptions = environment.dtOptions;
+    this.isLoading = true;
 
     firebase.firestore().collection('red').onSnapshot((snapshot) => {
       this.redes = [] as any;
@@ -43,6 +55,14 @@ export class AcademiaComponent implements OnInit {
           }
         });
       });
+      
+      if(this.isLoading){
+        this.isLoading = false;
+        this.dtTrigger.next(false);  
+      }else{
+        this.rerenderDatatable();
+      }    
+
       });
     }); 
   }
@@ -71,6 +91,19 @@ export class AcademiaComponent implements OnInit {
 
   agregarUsuario(documento){
     this.router.navigate(['/agregar-usuario-academia',documento.id])
+  }
+
+  rerenderDatatable() {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        // Destroy the table first
+        dtInstance.destroy();
+        // Call the dtTrigger to rerender again
+        this.dtTrigger.next();
+    });
+  }
+
+  ngOnDestroy(): void {
+      this.dtTrigger.unsubscribe();
   }
 
 }

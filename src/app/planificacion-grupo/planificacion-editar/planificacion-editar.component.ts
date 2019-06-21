@@ -70,6 +70,10 @@ export class PlanificacionEditarComponent implements OnInit {
                 data: doc.data()
             });
         });
+
+        this.documentos4.forEach(usuario => {
+          usuario.data['nombreCompleto'] = usuario.data['nombre'] + ' ' + usuario.data['apellido']
+        })
       });
     }
 

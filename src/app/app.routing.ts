@@ -49,6 +49,9 @@ export const AppRoutes: Routes = [{
         },{
             path: '',
             loadChildren: './lightweekend/lightweekend.module#LightweekendModule'
+        },{
+            path: '',
+            loadChildren: './organigrama/organigrama.module#OrganigramaModule'
         }]
         },{
             path: '',

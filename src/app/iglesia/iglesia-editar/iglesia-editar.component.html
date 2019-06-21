@@ -17,6 +17,13 @@
                   <div class="form-group">
                     <input type="text" class="form-control" name="nombre" [(ngModel)]="documento.data['nombre']" required>
                   </div>
+                  <label>Encargado</label>
+                  <div class="form-group">
+                      <select name="encargadoIglesia" class="form-control" [(ngModel)]="documento.data['encargadoIglesia']">
+                        <option value=""></option>
+                        <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['nombre']}}  {{documento2.data['apellido']}}</option>
+                      </select>
+                    </div>
                   <div class="card-footer text-center">
                       <button [disabled]="!iglesiaForm.valid" type="submit" class="btn btn-info">Editar Iglesia</button>
                     </div>

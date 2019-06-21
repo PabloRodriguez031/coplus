@@ -12,20 +12,26 @@
                     <li class="breadcrumb-item"><a>Ingreso de Notas Academia</a></li>
                   </ol>
                 </nav>             
-            <div class="col-md-12">
+            <div class="col-md-12">            
               <div class="table-responsive">
                   <table class="table">
                       <tr>
                         <th>Estudiante</th>
-                        <th>Nota</th>
+                        <th>Modulo I</th>
+                        <th>Modulo II</th>
+                        <th>Modulo III</th>
+                        <th>Modulo IV</th>
                         <th class="text-right">Acción</th>
                       </tr>
 
                       <tr *ngFor="let usuarioAcademia of usuariosAcademia">
                         <td>{{usuarioAcademia.data['nombre']}} {{usuarioAcademia.data['apellido']}}</td>
-                        <td> <input type="text" name="nota" ngModel #nota = "ngModel"> </td>
+                        <td> <input type="text" name="modulo1" ngModel #modulo1 = "ngModel"> </td>
+                        <td> <input type="text" name="modulo2" ngModel #modulo2 = "ngModel"> </td>
+                        <td> <input type="text" name="modulo3" ngModel #modulo3 = "ngModel"> </td>
+                        <td> <input type="text" name="modulo4" ngModel #modulo4 = "ngModel"> </td>
                           <td class="text-right">
-                              <button class="btn btn-success btn-sm acciontabla" (click)="ingresarNota(usuarioAcademia.id, nota.value)">
+                              <button class="btn btn-success btn-sm acciontabla" (click)="ingresarNota(usuarioAcademia.id, modulo1.value, modulo2.value, modulo3.value, modulo4.value)">
                                   <i class="nc-icon nc-check-2"></i>
                               </button>
                           </td>

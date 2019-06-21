@@ -36,11 +36,15 @@
                   </div>
                   <label>Semana</label>
                   <div class="form-group">
-                    <input type="number" class="form-control" name="semana" [(ngModel)]="documento.data['semana']" required>
+                    <input type="number" class="form-control" name="semana" min="1" [(ngModel)]="documento.data['semana']" required>
                   </div>
                   <label>Versiculos</label>
                   <div class="form-group">
                     <input type="text" class="form-control" name="versiculos" [(ngModel)]="documento.data['versiculos']" required>
+                  </div>
+                  <label>Fecha de creación</label>
+                  <div class="form-group">
+                    <p>{{documento.data['fecha_creacion']|date:'dd-MM-yyyy'}}</p>
                   </div>
                   <div class="card-footer text-center">
                       <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Predica</button>

@@ -80,6 +80,7 @@ export class UsuarioEditarComponent implements OnInit {
             nombre: this.documento.data['nombre'],
             apellido: this.documento.data['apellido'],
             correo: this.documento.data['correo'],
+            password: this.documento.data['password'],
             telefono: this.documento.data['telefono'],
             fecha_nacimiento: this.documento.data['fecha_nacimiento'],
             graduado: this.documento.data['graduado'],

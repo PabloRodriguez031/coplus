@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ApiService } from '../servicios/api.service';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { NotificationsService } from 'app/servicios/notifications.service';
+import { Subject } from 'rxjs';
+import {DataTableDirective} from 'angular-datatables';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-red', 
@@ -10,6 +13,11 @@ import { NotificationsService } from 'app/servicios/notifications.service';
   styleUrls: ['./red.component.css']
 })
 export class RedComponent implements OnInit{
+
+  @ViewChild(DataTableDirective) dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<boolean> = new Subject();
+
   documentos :any = []; 
   coleccion = 'red';
 
@@ -17,10 +25,15 @@ export class RedComponent implements OnInit{
 
   documentos_filtrados :any = [];
 
+  isLoading = false;
 
   constructor(public apiService: ApiService, private router: Router, private notificationsService: NotificationsService ) { }
 
   ngOnInit() {
+
+    this.dtOptions = environment.dtOptions;
+    this.isLoading = true;
+
     firebase.firestore().collection('iglesia').onSnapshot((snapshot) => {
       this.iglesias = [] as any;
       snapshot.forEach(doc => {
@@ -44,7 +57,15 @@ export class RedComponent implements OnInit{
           }
         });
       });
-        this.documentos_filtrados = this.documentos.slice();
+      
+        if(this.isLoading){
+          this.isLoading = false;
+          this.dtTrigger.next(false);  
+        }else{
+          this.rerenderDatatable();
+        }    
+
+        this.documentos_filtrados = this.documentos.slice();        
       });
     });  
   }
@@ -76,6 +97,19 @@ export class RedComponent implements OnInit{
         return red.data['iglesia'] === evento.target.value;
       });
     }
+  }
+
+  rerenderDatatable() {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        // Destroy the table first
+        dtInstance.destroy();
+        // Call the dtTrigger to rerender again
+        this.dtTrigger.next();
+    });
+  }
+
+  ngOnDestroy(): void {
+      this.dtTrigger.unsubscribe();
   }
 
 }

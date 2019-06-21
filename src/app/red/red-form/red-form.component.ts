@@ -17,6 +17,7 @@ export class RedFormComponent implements OnInit {
   documentos2 = {} as any;
   coleccion2 = 'iglesia';
 
+  usuarios = {} as any;
 
   constructor(public apiService: ApiService, private notificationsService: NotificationsService) { }
 
@@ -30,6 +31,20 @@ export class RedFormComponent implements OnInit {
           });
       });
     });
+
+    firebase.firestore().collection('usuario').onSnapshot((snapshot) => {
+      this.usuarios = [] as any;
+      snapshot.forEach(doc => {
+          this.usuarios.push({
+              id: doc.id,
+              data: doc.data()
+          });
+      });
+
+      this.usuarios.forEach(usuario => {
+        usuario.data['nombreCompleto'] = usuario.data['nombre'] + ' ' + usuario.data['apellido'];
+      })
+    });
   }
 
   addDocumento(form:NgForm) {  
@@ -39,6 +54,7 @@ export class RedFormComponent implements OnInit {
         this.apiService.addDocumento(this.coleccion, {
           descripcion: form.value.descripcion,
           iglesia: form.value.iglesia,
+          encargadoRed: form.value.encargadoRed
         }).then(respuesta => {
           this.notificationsService.showSwal('Creado', 'La red ha sido creada con éxito', 'success');
           form.resetForm();

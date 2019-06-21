@@ -20,7 +20,7 @@ export const ReporteDiscipuladoRoutes: Routes = [{
         path: 'editar-reporte-discipulado/:id',
         component: ReporteEditarComponent
     },{
-        path: 'asistencia-discipulado/:id',
+        path: 'asistencia-discipulado/:id/:discipulado',
         component: AsistenciaComponent
     }]
 }];

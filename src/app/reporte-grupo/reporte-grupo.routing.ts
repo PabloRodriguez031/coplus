@@ -19,7 +19,7 @@ export const ReporteGrupoRoutes: Routes = [{
         path: 'editar-reporte/:id',
         component: ReporteEditarComponent
     },{
-        path: 'asistencia-grupo/:id',
+        path: 'asistencia-grupo/:id/:grupo',
         component: AsistenciaComponent
     }]
 }];

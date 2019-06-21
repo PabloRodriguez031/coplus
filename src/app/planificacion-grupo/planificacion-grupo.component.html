@@ -11,33 +11,41 @@
             </div>              
             <div class="col-md-12">
               <div class="table-responsive">
-              <table class="table">
-                <tr>
-                  <th>Tema</th>
-                  <th>Fecha</th>
-                  <th>Grupo</th>
-                  <th>Predicador</th>
-                  <th>Bienvenida y visión</th>
-                  <th>Ofrenda</th>
-                  <th class="text-right">Acción</th>
-                </tr>
-                <tr *ngFor="let documento of documentos">
-                    <td>{{documento.data['predica_nombre']}}</td>
-                    <td>{{documento.data['fecha']}}</td>
-                    <td>{{documento.data['grupo_nombre']}}</td>
-                    <td>{{documento.data['predicador_nombre']}} {{documento.data['predicador_apellido']}}</td>
-                    <td>{{documento.data['bienvenida_vision_nombre']}} {{documento.data['bienvenida_vision_apellido']}}</td>
-                    <td>{{documento.data['ofrenda_nombre']}} {{documento.data['ofrenda_apellido']}}</td>
-                    <td class="text-right">
-                      <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
-                          <i class="nc-icon nc-zoom-split"></i>
-                      </button>
-                      <button class="btn btn-danger btn-sm acciontabla" (click)="deleteDocumento(documento)">
-                          <i class="nc-icon nc-simple-remove"></i>
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>                
+                  <tr>
+                    <th>Tema</th>
+                    <th>Fecha</th>
+                    <th>Grupo</th>
+                    <th>Predicador</th>
+                    <th>Bienvenida y visión</th>
+                    <th>Ofrenda</th>
+                    <th class="text-right">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let documento of documentos">
+                      <td>{{documento.data['predica_nombre']}}</td>
+                      <td>{{documento.data['fecha']}}</td>
+                      <td>{{documento.data['grupo_nombre']}}</td>
+                      <td>{{documento.data['predicador_nombre']}} {{documento.data['predicador_apellido']}}</td>
+                      <td>{{documento.data['bienvenida_vision_nombre']}} {{documento.data['bienvenida_vision_apellido']}}</td>
+                      <td>{{documento.data['ofrenda_nombre']}} {{documento.data['ofrenda_apellido']}}</td>
+                      <td class="text-right">
+                        <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
+                            <i class="nc-icon nc-zoom-split"></i>
                         </button>
-                  </td>
-                </tr>
+                        <button class="btn btn-danger btn-sm acciontabla" (click)="deleteDocumento(documento)">
+                            <i class="nc-icon nc-simple-remove"></i>
+                          </button>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
+              <p *ngIf="isLoading" class="text-center">Cargando datos... <i class="fa fa-spinner fa-spin"
+              style="font-size:15px;"></i></p>
+              <p *ngIf="documentos.length === 0 && !isLoading" class="text-center"> No hay datos para mostrar.</p>
               </div>
             </div>
   

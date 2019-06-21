@@ -29,11 +29,11 @@
                   </div>  
                     <label>Asistieron</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" name="asistieron" ngModel required>
+                      <input type="number" class="form-control" min="0" name="asistieron" ngModel required>
                     </div>  
                     <label>Observaciones</label>
                     <div class="form-group">
-                      <textarea name="observaciones" ngModel></textarea>
+                      <textarea name="observaciones" class="form-control" ngModel></textarea>
                     </div>      
                   <div class="card-footer text-center">
                       <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Reporte</button>

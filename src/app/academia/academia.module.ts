@@ -9,14 +9,17 @@ import { AcademiaFormComponent } from './academia-form/academia-form.component';
 import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
 import { AcademiaEditarComponent } from './academia-editar/academia-editar.component';
 import { NotasComponent } from './notas/notas.component';
+import { PensumComponent } from './pensum/pensum.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild(AcademiaRoutes),
-        FormsModule
+        FormsModule,
+        DataTablesModule
     ],
-    declarations: [AcademiaComponent, AcademiaFormComponent, AgregarUsuarioComponent, AcademiaEditarComponent, NotasComponent]
+    declarations: [AcademiaComponent, AcademiaFormComponent, AgregarUsuarioComponent, AcademiaEditarComponent, NotasComponent, PensumComponent]
 })
 
 export class AcademiaModule {}

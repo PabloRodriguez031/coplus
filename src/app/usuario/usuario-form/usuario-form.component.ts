@@ -67,6 +67,7 @@ export class UsuarioFormComponent implements OnInit {
           nombre: form.value.nombre,
           apellido: form.value.apellido,
           correo: form.value.correo,
+          password: form.value.password,
           telefono: form.value.telefono,
           fecha_nacimiento: form.value.fecha_nacimiento,
           graduado: form.value.graduado,

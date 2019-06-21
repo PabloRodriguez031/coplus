@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
 import { ApiService } from 'app/servicios/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationsService } from 'app/servicios/notifications.service';
+import { Subject } from 'rxjs';
+import {DataTableDirective} from 'angular-datatables';
+import { environment } from 'environments/environment';
 
 declare const $: any;
 
@@ -12,6 +15,10 @@ declare const $: any;
   styleUrls: ['./agregar-usuario.component.css']
 })
 export class AgregarUsuarioComponent implements OnInit {
+
+  @ViewChild(DataTableDirective) dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<boolean> = new Subject();
 
   lideresGrupo:any = [];
   usuariosGrupo :any = [];
@@ -29,10 +36,15 @@ export class AgregarUsuarioComponent implements OnInit {
 
   documentoId;
 
+  isLoading = false;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private notificationsService: NotificationsService) { }
 
   ngOnInit() {
+
+    this.dtOptions = environment.dtOptions;
+    this.isLoading = true;
+
     this.documentoId = this.route.snapshot.params['id'];
     this.apiService.getDocumentoById(this.coleccion2, this.documentoId).then(academia => {
       this.documentos2 = {
@@ -40,14 +52,6 @@ export class AgregarUsuarioComponent implements OnInit {
         data: academia.data()
       };
     });
-
-    if(this.lideresRed){
-      this.lideresRed = this.filtrarUsuarios(this.lideresRed, 'lideresIds');
-    }
-    if(this.usuariosRed){
-      this.usuariosRed = this.filtrarUsuarios(this.usuariosRed, 'gruposIds');
-    }
-
 
     firebase.firestore().collection(this.coleccion).where('liderGrupoId', '==', this.documentoId).
     where('graduado', '==', 'Si').onSnapshot((snapshot) => {
@@ -58,6 +62,14 @@ export class AgregarUsuarioComponent implements OnInit {
               data: lideresGrupo.data()
           });
         });
+
+        if(this.isLoading){
+          this.isLoading = false;
+          this.dtTrigger.next(false);  
+        }else{
+          this.rerenderDatatable();
+        }    
+
     });
 
     firebase.firestore().collection(this.coleccion).where('grupoId', '==', this.documentoId).
@@ -84,7 +96,7 @@ export class AgregarUsuarioComponent implements OnInit {
               data: doc.data()
           });
         });
-        this.lideresRed = this.filtrarUsuarios(this.lideresRed, 'lideresIds');
+
         $('#formModal').modal('toggle');
     });  
   }
@@ -157,28 +169,6 @@ export class AgregarUsuarioComponent implements OnInit {
     });
   }
 
-  filtrarUsuarios(usuarios, campo){
-
-
-
-    const usuariosfiltrados = [];    
-    usuarios.forEach(usuario => {
-      let existe = false;
-      this.documentos2.data[campo].forEach(discipulo =>{
-        if(usuario.id === discipulo){
-          existe = true;
-        }
-      });      
-      if(existe === false){
-        usuariosfiltrados.push(usuario);
-      }
-    });
-
-    console.log(usuarios);
-    return usuariosfiltrados;
-
-  }
-
   openForm2() {
     firebase.firestore().collection('usuario').where('red', '==', this.documentos2.data['red']).
     where('graduado', '==', 'No').
@@ -191,7 +181,6 @@ export class AgregarUsuarioComponent implements OnInit {
               data: doc.data()
           });
         });
-        this.filtrarUsuarios(this.usuariosRed, 'gruposIds');
         $('#formModal2').modal('toggle');
     });
   }
@@ -204,7 +193,9 @@ export class AgregarUsuarioComponent implements OnInit {
         if(!this.documentos2.data['gruposIds']){
           this.documentos2.data['gruposIds'] = [];
         }        
-        this.documentos2.data['gruposIds'].push(id);
+        this.documentos2.data['gruposIds'].push({
+          id: id
+        });
         this.apiService.updateDocumento(this.coleccion2, { 
           gruposIds: this.documentos2.data['gruposIds']
         }, this.documentoId).then(respuesta => {
@@ -262,5 +253,19 @@ export class AgregarUsuarioComponent implements OnInit {
       }
     });
   }
+
+  rerenderDatatable() {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        // Destroy the table first
+        dtInstance.destroy();
+        // Call the dtTrigger to rerender again
+        this.dtTrigger.next();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
+
 
 }

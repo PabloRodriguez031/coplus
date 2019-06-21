@@ -25,10 +25,18 @@
                   </div>
                   <label>¿A que discipulado pertenece el discipulado?</label> 
                   <div class="form-group">
-                    <select name="discipuladoPadre" class="form-control" ngModel required>
+                      <ng-select [items]="documentos"
+                      bindLabel="data.discipulado"
+                      bindValue="id"
+                      ngModel
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="discipuladoPadre">
+                      </ng-select>
+                      
+                    <!-- <select name="discipuladoPadre" class="form-control" ngModel required>
                       <option>-</option>
                       <option value="{{documento.id}}" *ngFor="let documento of documentos">{{documento.data['discipulado']}}</option>
-                    </select>
+                    </select> -->
                   </div>
                   <label>Direccion donde se realiza</label>
                   <div class="form-group">

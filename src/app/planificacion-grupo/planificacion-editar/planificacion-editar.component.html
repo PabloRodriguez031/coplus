@@ -32,21 +32,39 @@
                   </div>
                   <label>Predicador</label> 
                   <div class="form-group">
-                    <select name="predicador" class="form-control" [(ngModel)]="documento.data['predicador']" required>
-                        <option value="{{documento4.id}}" *ngFor="let documento4 of documentos4">{{documento4.data['nombre']}} {{documento4.data['apellido']}}</option>
-                    </select>
+
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      [(ngModel)]="documento.data['predicador']" required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="predicador">
+                      </ng-select>   
+
                   </div>
                   <label>Bienvenida y visión</label> 
                   <div class="form-group">
-                    <select name="bienvenida_vision" class="form-control" [(ngModel)]="documento.data['bienvenida_vision']" required>
-                        <option value="{{documento4.id}}" *ngFor="let documento4 of documentos4">{{documento4.data['nombre']}} {{documento4.data['apellido']}}</option> 
-                      </select>
+
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      [(ngModel)]="documento.data['bienvenida_vision']" required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="bienvenida_vision">
+                      </ng-select>   
+
                   </div>
                   <label>Ofrenda</label> 
                   <div class="form-group">
-                    <select name="ofrenda" class="form-control" [(ngModel)]="documento.data['ofrenda']" required>
-                        <option value="{{documento4.id}}" *ngFor="let documento4 of documentos4">{{documento4.data['nombre']}} {{documento4.data['apellido']}}</option>              
-                      </select>
+
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      [(ngModel)]="documento.data['ofrenda']" required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="ofrenda">
+                      </ng-select>   
+
                   </div>
                   <div class="card-footer text-center">
                       <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Grupo</button>

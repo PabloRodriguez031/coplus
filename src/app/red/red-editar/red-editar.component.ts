@@ -17,6 +17,9 @@ export class RedEditarComponent implements OnInit {
   documentos2 = [] as any;
   coleccion2 = 'iglesia';
 
+  documentos3 = [] as any;
+  coleccion3 = 'usuario';
+
   constructor(private route: ActivatedRoute, private apiService: ApiService, private notificationsService: NotificationsService) { }
 
   ngOnInit() {
@@ -44,6 +47,21 @@ export class RedEditarComponent implements OnInit {
             });
         });
       });
+
+      
+      firebase.firestore().collection(this.coleccion3).onSnapshot((snapshot) => {
+        this.documentos3 = [] as any;
+        snapshot.forEach(doc => {
+            this.documentos3.push({
+                id: doc.id,
+                data: doc.data()
+            });
+        });
+
+        this.documentos3.forEach(usuario => {
+          usuario.data['nombreCompleto'] = usuario.data['nombre'] + ' ' + usuario.data['apellido'];
+        })
+      });
     }
 
     updateDocumento(){      
@@ -53,6 +71,7 @@ export class RedEditarComponent implements OnInit {
           this.apiService.updateDocumento(this.coleccion, {
             descripcion: this.documento.data['descripcion'],
             iglesia: this.documento.data['iglesia'],
+            encargadoRed: this.documento.data['encargadoRed']
           }, this.documento.id).then(respuesta => {
             this.notificationsService.showSwal('Editado', 'La red ha sido editada con éxito', 'success');
           }).catch(error => {

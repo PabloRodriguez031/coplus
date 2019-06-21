@@ -108,7 +108,7 @@
                 <div id="{{menuitem.title}}" class="collapse" *ngIf="menuitem.type === 'sub'">
                     <ul class="nav">
                         <li routerLinkActive="active" *ngFor="let childitem of menuitem.children">
-                            <a [routerLink]="[menuitem.path, childitem.path]">
+                            <a [routerLink]="[childitem.path]">
                                 <span class="sidebar-mini-icon">{{childitem.ab}}</span>
                                 <span class="sidebar-normal">{{childitem.title}}</span>
                             </a>

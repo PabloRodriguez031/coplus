@@ -26,9 +26,13 @@
                   </div>
                   <label>Discipulado al que pertenece</label> 
                   <div class="form-group">
-                    <select name="discipulado" class="form-control" [(ngModel)]="documento.data['discipulado']" required>
-                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['discipulado']}}</option>
-                    </select>
+                      <ng-select [items]="documentos3"
+                      bindLabel="data.discipulado"
+                      bindValue="id"
+                      [(ngModel)]="documento.data['discipulado']" required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="discipulado">
+                      </ng-select>  
                   </div>
                   <label>Día en que se realiza</label>
                   <div class="form-group">                    

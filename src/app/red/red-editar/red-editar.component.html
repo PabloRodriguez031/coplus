@@ -25,6 +25,18 @@
                       <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['nombre']}}</option>
                     </select>
                   </div>
+                  <label>Encargado</label>
+                  <div class="form-group">
+
+                      <ng-select [items]="documentos3"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      [(ngModel)]="documento.data['encargadoRed']"
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="encargadoRed">
+                      </ng-select>
+
+                    </div>
 
                   <div class="card-footer text-center">
                       <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Editar Red</button>

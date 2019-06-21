@@ -36,12 +36,18 @@
                   </div>
                   <label>Semana</label>
                   <div class="form-group">
-                    <input type="number" class="form-control" name="semana" ngModel required>
+                    <input type="number" class="form-control" name="semana" min="1" ngModel required>
                   </div>
                   <label>Versículos que debe llevar la predica</label>
                   <div class="form-group">
                       <input type="text" class="form-control" name="versiculos" ngModel required placeholder="Ej: Genesis 1:1, Hebreos 2:10, Juan 1:1">
-                    </div>
+                  </div>
+
+                  <label>Fecha de creación</label>
+                  <div>                      
+                      <p>{{today | date:'dd-MM-yyyy'}}</p>                      
+                  </div>
+
                   <div class="card-footer text-center">
                       <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Predica</button>
                     </div>

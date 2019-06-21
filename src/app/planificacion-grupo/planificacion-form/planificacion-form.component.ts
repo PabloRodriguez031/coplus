@@ -54,6 +54,11 @@ export class PlanificacionFormComponent implements OnInit {
               data: doc.data()
           });
       });
+      
+      this.documentos4.forEach(usuario => {
+        usuario.data['nombreCompleto'] = usuario.data['nombre'] + ' ' + usuario.data['apellido'];        
+      });
+
     });
   }
 

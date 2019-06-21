@@ -8,12 +8,17 @@ import { GrupoRoutes } from './grupo.routing';
 import { GrupoFormComponent } from './grupo-form/grupo-form.component';
 import { GrupoEditarComponent } from './grupo-editar/grupo-editar.component';
 import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
+import { DataTablesModule } from 'angular-datatables';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild(GrupoRoutes),
-        FormsModule
+        FormsModule,
+        DataTablesModule,
+        NgSelectModule
     ],
     declarations: [GrupoComponent, GrupoFormComponent, GrupoEditarComponent, AgregarUsuarioComponent]
 })

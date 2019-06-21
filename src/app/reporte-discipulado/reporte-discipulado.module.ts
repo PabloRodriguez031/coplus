@@ -8,14 +8,14 @@ import { ReporteFormComponent } from './reporte-form/reporte-form.component';
 import { ReporteDiscipuladoRoutes } from './reporte-discipulado.routing';
 import { ReporteDiscipuladoComponent } from './reporte-discipulado.component';
 import { AsistenciaComponent } from './asistencia/asistencia.component';
-
-
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild(ReporteDiscipuladoRoutes),
-        FormsModule
+        FormsModule,
+        DataTablesModule
     ],
     declarations: [ReporteDiscipuladoComponent, ReporteEditarComponent, ReporteFormComponent, AsistenciaComponent]
 })

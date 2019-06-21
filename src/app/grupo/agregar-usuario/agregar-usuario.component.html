@@ -24,7 +24,7 @@
                             </button>   
                         </td>
                       </tr>                     
-                    </table>
+                    </table>                    
                 </div>
             </div>
         </div>
@@ -78,14 +78,13 @@
                   <li class="breadcrumb-item"><a>Usuarios en Grupo</a></li>
                 </ol>
               </nav>
-            <form #documentoForm="ngForm" (ngSubmit)="addDocumento(documentoForm)">
                 <label>Nombre de lideres</label>
                 <br>
                 <button class="btn btn-warning btn-sm acciontabla" (click)="openForm();">
                   <i class="nc-icon nc-zoom-split"></i>
                 </button>       
                 <div class="table-responsive">
-                  <table class="table">
+                    <table class="table">
                       <tr>
                           <th>Lider</th>
                           <th class="text-right">Acción</th>
@@ -98,7 +97,7 @@
                           </button>
                         </td>
                       </tr>
-                  </table>
+                  </table>                  
                 </div>  
                 <br>
                 <label>Personas que asisten a este grupo</label>
@@ -108,21 +107,20 @@
                 </button>  
                 <div class="table-responsive">
                     <table class="table">
-                        <tr>
-                            <th>Integrantes</th>
-                            <th class="text-right">Acción</th>
-                        </tr>
-                        <tr *ngFor="let usuarioGrupo of usuariosGrupo; let i = index">
-                          <td>{{usuarioGrupo.data['nombre']}} {{usuarioGrupo.data['apellido']}}</td>
-                          <td class="text-right">
-                            <button class="btn btn-danger btn-sm acciontabla" (click)="deleteUsuario(usuarioGrupo.id, i)">
-                              <i class="nc-icon nc-simple-remove"></i>
-                            </button>
-                          </td>
-                        </tr>
-                    </table>
+                      <tr>
+                          <th>Integrantes</th>
+                          <th class="text-right">Acción</th>
+                      </tr>
+                      <tr *ngFor="let usuarioGrupo of usuariosGrupo; let i = index">
+                        <td>{{usuarioGrupo.data['nombre']}} {{usuarioGrupo.data['apellido']}}</td>
+                        <td class="text-right">
+                          <button class="btn btn-danger btn-sm acciontabla" (click)="deleteUsuario(usuarioGrupo.id, i)">
+                            <i class="nc-icon nc-simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </table>                  
                   </div>  
-              </form>                
         </div>  
       </div>
     </div>

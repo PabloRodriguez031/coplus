@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 
 import { PanelLightweekendComponent } from './panel-lightweekend.component';
 import { PanellightweekendRoutes } from './panel-lightweekend.routing';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild(PanellightweekendRoutes),
-        FormsModule
+        FormsModule,
+        DataTablesModule
     ],
     declarations: [PanelLightweekendComponent]
 })

@@ -13,6 +13,8 @@ export class PredicaFormComponent implements OnInit {
   documentos = {} as any;
   coleccion = 'predica';
 
+  today: number = Date.now();
+
 
   constructor(public apiService: ApiService, private notificationsService: NotificationsService) { }
 
@@ -28,7 +30,8 @@ export class PredicaFormComponent implements OnInit {
           nombre: form.value.nombre,
           mes: form.value.mes,
           semana: form.value.semana,
-          versiculos: form.value.versiculos
+          versiculos: form.value.versiculos,
+          fecha_creacion: this.today
         }).then(respuesta => {
           this.notificationsService.showSwal('Creado', 'La predica ha sido creada con éxito', 'success');
           form.resetForm();

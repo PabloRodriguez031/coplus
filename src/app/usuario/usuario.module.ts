@@ -7,12 +7,14 @@ import { UsuarioComponent } from './usuario.component';
 import { UsuarioRoutes } from './usuario.routing';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { UsuarioEditarComponent } from './usuario-editar/usuario-editar.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild(UsuarioRoutes),
-        FormsModule
+        FormsModule,
+        DataTablesModule
     ],
     declarations: [UsuarioComponent, UsuarioFormComponent, UsuarioEditarComponent]
 })

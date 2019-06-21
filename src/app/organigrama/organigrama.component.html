@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Organigrama</h4>
+          </div>
+          <div class="card-body ">              
+            <div class="col-md-12">             
+                <ul>
+                  <li *ngFor="let red of organigrama">{{red[0]['data']['descripcion']}}
+                    <ul *ngIf="red['discipulados'].length > 0">
+                      <label>Discipulados</label>
+                      <li *ngFor="let discipulado of red['discipulados']">
+                        {{discipulado[0]['data']['discipulado']}}
+                        <!-- Discipulados hijos -->
+                        <ul *ngIf="discipulado['discipulados_hijos'].length > 0">
+                          <label>Discipulados Hijos</label>
+                          <li *ngFor="let discipulado_hijo of discipulado['discipulados_hijos']">
+                              {{discipulado_hijo['data']['discipulado']}}
+                              <div *ngIf="discipulado_hijo['grupos']">
+                                  <ul *ngIf="discipulado_hijo['grupos'].length > 0">
+                                    <label>Grupos</label>
+                                      <li *ngFor="let grupo of discipulado_hijo['grupos']">
+                                        {{grupo[0]['data']['nombre']}}
+                                      </li>
+                                    </ul>
+                              </div> 
+                              
+                              <div *ngIf="discipulado_hijo['discipulado_hijo']">
+                                  <ul *ngIf="discipulado_hijo['discipulado_hijo'].length > 0">
+                                    <label>Discipulados Hijos</label>
+                                      <li *ngFor="let discipulado_hijo2 of discipulado_hijo['discipulado_hijo']">
+                                        {{discipulado_hijo2['data']['discipulado']}}
+                                      </li>
+                                    </ul>
+                              </div>   
+                            </li> 
+                        </ul>
+                          <!-- Grupos del discipulado padre -->
+                        <ul *ngIf="discipulado['grupos'].length > 0">
+                          <label>Grupos</label>
+                          <li *ngFor="let grupo of discipulado['grupos']">
+                            {{grupo['data']['nombre']}}
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+            </div>           
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+  

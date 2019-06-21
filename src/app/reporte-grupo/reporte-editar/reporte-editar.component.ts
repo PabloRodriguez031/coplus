@@ -20,6 +20,7 @@ export class ReporteEditarComponent implements OnInit {
   documentos3 = {} as any;
   coleccion3 = 'grupo';
 
+  total:number;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private notificationsService: NotificationsService) { }
 
@@ -64,21 +65,29 @@ export class ReporteEditarComponent implements OnInit {
       this.notificationsService.showConfirmationSwal().then(resultado => {
         if(resultado.value){
           this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
-          this.apiService.updateDocumento(this.coleccion, {
-            grupo: this.documento.data['grupo'],
-            tema: this.documento.data['tema'],
-            asistieron: this.documento.data['asistieron'],
-            nuevos: this.documento.data['nuevos'],
-            convertidos: this.documento.data['convertidos'],
-            reconciliados: this.documento.data['reconciliados'],
-            ofrendas: this.documento.data['ofrendas'],
-            observaciones: this.documento.data['observaciones'],
-          }, this.documento.id).then(respuesta => {
-            this.notificationsService.showSwal('Editado', 'El reporte ha sido editado con éxito', 'success');
-          }).catch(error => {
-            console.log(error);
-            this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
-          })
+
+          this.total = this.documento.data['nuevos'] + this.documento.data['convertidos'] + this.documento.data['reconciliados'];
+          
+          if(this.total < this.documento.data['asistieron']){
+            this.apiService.updateDocumento(this.coleccion, {
+              grupo: this.documento.data['grupo'],
+              tema: this.documento.data['tema'],
+              asistieron: this.documento.data['asistieron'],
+              nuevos: this.documento.data['nuevos'],
+              convertidos: this.documento.data['convertidos'],
+              reconciliados: this.documento.data['reconciliados'],
+              ofrendas: this.documento.data['ofrendas'],
+              observaciones: this.documento.data['observaciones'],
+            }, this.documento.id).then(respuesta => {
+              this.notificationsService.showSwal('Editado', 'El reporte ha sido editado con éxito', 'success');
+            }).catch(error => {
+              console.log(error);
+              this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
+            })
+          }else{
+            this.notificationsService.showSwal('Ha ocurrido un error', 'La sumatoria de nuevos, convertidos y reconciliados no puede ser mayor a la cantidad que asistieron', 'error');
+          }
+          
         }
       });
     }

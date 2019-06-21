@@ -12,37 +12,37 @@
             <div class="col-md-12">
               <div class="table-responsive">
                   <table class="table">
-                      <tr>
-                        <th>Nombre</th>
-                        <th>Red</th>
-                        <th>Discipulado</th>
-                        <th>Día</th>
-                        <th>Direccion</th>
-                        <th>Zona</th>                  
-                        <th>Hora</th>
-                        <th class="text-right">Acción</th>
-                      </tr>
-                      <tr *ngFor="let documento of documentos">
-                        <td>{{documento.data['nombre']}}</td>
-                        <td>{{documento.data['red_nombre']}}</td>
-                        <td>{{documento.data['discipulado_nombre']}}</td>
-                        <td>{{documento.data['dia']}}</td>
-                        <td>{{documento.data['direccion']}}</td>
-                        <td>{{documento.data['zona']}}</td>
-                        <td>{{documento.data['hora']}}</td>
-                        <td class="text-right">
-                            <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
-                                <i class="nc-icon nc-zoom-split"></i>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Red</th>
+                      <th>Discipulado</th>
+                      <th>Día</th>
+                      <th>Direccion</th>
+                      <th>Zona</th>                  
+                      <th>Hora</th>
+                      <th class="text-right">Acción</th>
+                    </tr>
+                    <tr *ngFor="let documento of documentos">
+                      <td>{{documento.data['nombre']}}</td>
+                      <td>{{documento.data['red_nombre']}}</td>
+                      <td>{{documento.data['discipulado_nombre']}}</td>
+                      <td>{{documento.data['dia']}}</td>
+                      <td>{{documento.data['direccion']}}</td>
+                      <td>{{documento.data['zona']}}</td>
+                      <td>{{documento.data['hora']}}</td>
+                      <td class="text-right">
+                          <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
+                              <i class="nc-icon nc-zoom-split"></i>
+                          </button>
+                          <button class="btn btn-info btn-sm acciontabla" (click)="agregarUsuario(documento)">
+                            <i class="nc-icon nc-single-02"></i>
+                          </button>
+                          <button class="btn btn-danger btn-sm acciontabla" (click)="deleteDocumento(documento)">
+                              <i class="nc-icon nc-simple-remove"></i>
                             </button>
-                            <button class="btn btn-info btn-sm acciontabla" (click)="agregarUsuario(documento)">
-                              <i class="nc-icon nc-single-02"></i>
-                            </button>
-                            <button class="btn btn-danger btn-sm acciontabla" (click)="deleteDocumento(documento)">
-                                <i class="nc-icon nc-simple-remove"></i>
-                              </button>
-                        </td>
-                      </tr>
-                    </table>
+                      </td>
+                    </tr>
+                    </table>                    
               </div>
             </div>
   

@@ -5,6 +5,7 @@ import { AcademiaFormComponent } from './academia-form/academia-form.component';
 import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
 import { AcademiaEditarComponent } from './academia-editar/academia-editar.component';
 import { NotasComponent } from './notas/notas.component';
+import { PensumComponent } from './pensum/pensum.component';
 
 export const AcademiaRoutes: Routes = [{
     path: '',
@@ -23,5 +24,8 @@ export const AcademiaRoutes: Routes = [{
     },{
         path: 'ingreso-notas/:id',
         component: NotasComponent
+    },{
+        path: 'pensum',
+        component: PensumComponent
     }]
 }];

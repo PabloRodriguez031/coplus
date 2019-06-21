@@ -22,36 +22,38 @@
                   <label>Tema el cual desea reportar</label>
                   <div class="form-group">
                     <select name="tema" class="form-control" ngModel required>
-                     <option value="{{documento2.data['tema']}}" *ngFor="let documento2 of documentos2">{{documento2.data['fecha']}} - {{documento2.data['tema_nombre']}}</option>
+                     <option value="{{documento2.data['tema']}}" *ngFor="let documento2 of documentos2">{{documento2.data['tema_nombre']}}</option>
                     </select>
                   </div>
-                    <label>Asistieron</label>
-                    <div class="form-group">
-                      <input type="number" class="form-control" name="asistieron" ngModel required>
-                    </div> 
-                    <label>Nuevos</label>
-                    <div class="form-group">
-                      <input type="number" class="form-control" name="nuevos" ngModel required>
-                    </div>  
-                    <label>Convertidos</label>
-                    <div class="form-group">
-                      <input type="number" class="form-control" name="convertidos" ngModel required>
-                    </div>  
-                    <label>Reconciliados</label>
-                    <div class="form-group">
-                      <input type="number" class="form-control" name="reconciliados" ngModel required>
-                    </div>  
-                    <label>Ofrendas</label>
-                    <div class="form-group">                    
-                      <input type="number" class="form-control col-md-3" name="ofrendas" ngModel required>
-                    </div>  
-                    <label>Observaciones</label>
-                    <div class="form-group">
-                      <textarea name="observaciones" ngModel></textarea>
-                    </div>      
+                  <label>Fecha</label>
+                  <input type="date" class="form-control" name="fecha" ngModel required>
+                  <label>Asistieron</label>
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="total" [(ngModel)]="total" name="asistieron" min="0" required>
+                  </div> 
+                  <label>Nuevos {{max}}</label>
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="val1" [(ngModel)]="val1" name="nuevos" min="0" required>
+                  </div>  
+                  <label>Convertidos</label>
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="val2"  [(ngModel)]="val2" name="convertidos" min="0" required>
+                  </div>  
+                  <label>Reconciliados</label>
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="val3"  [(ngModel)]="val3" name="reconciliados" min="0" required>
+                  </div>  
+                  <label>Ofrendas</label>
+                  <div class="form-group">                    
+                    <input type="number" class="form-control col-md-3" name="ofrendas" min="0" ngModel required>
+                  </div>  
+                  <label>Observaciones</label>
+                  <div class="form-group">
+                    <textarea name="observaciones" class="form-control" ngModel></textarea>
+                  </div>      
                   <div class="card-footer text-center">
-                      <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Reporte</button>
-                    </div>
+                    <button [disabled]="!documentoForm.valid" type="submit" class="btn btn-info">Agregar Reporte</button>
+                  </div>
                 </form>                
           </div>  
         </div>

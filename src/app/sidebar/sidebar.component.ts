@@ -47,40 +47,53 @@ export const ROUTES: RouteInfo[] = [{
     ,{
         path: '/discipulado',
         title: 'Discipulados',
-        type: 'link',
+        type: 'sub',
+        children: [
+            {
+                path: '/discipulado',
+                title: 'Listado de discipulados',
+               ab: 'LD'
+            },{
+                path: '/reporte-discipulado',
+                title: 'Reporte discipulados',
+                 ab: 'RD'
+            }],
         icontype: 'nc-icon nc-badge'
     },{
         path: '/grupo',
         title: 'Grupos',
-        type: 'link',
+        type: 'sub',
+        children: [
+            {
+                path: '/grupo',
+                title: 'Listado de grupos',            
+                ab: 'LG'
+            },{
+                path: '/predica',
+                title: 'Predicas',
+                ab: 'P'
+            },{
+                path: '/planificacion-grupo',
+                title: 'Planificacion grupos',            
+                ab: 'PG'
+            },{
+                path: '/reporte-grupo',
+                title: 'Reporte grupos',
+                ab: 'RG'
+            }],
         icontype: 'nc-icon nc-shop'
     },{
-        path: '/predica',
-        title: 'Predicas',
+        path: '/organigrama',
+        title: 'Organigrama',
         type: 'link',
-        icontype: 'nc-icon nc-box'
-    },{
-        path: '/planificacion-grupo',
-        title: 'Planificacion grupos',
-        type: 'link',
-        icontype: 'nc-icon nc-calendar-60'
-    },{
-        path: '/reporte-grupo',
-        title: 'Reporte grupos',
-        type: 'link',
-        icontype: 'nc-icon nc-ruler-pencil'
-    },{
-        path: '/reporte-discipulado',
-        title: 'Reporte discipulados',
-        type: 'link',
-        icontype: 'nc-icon nc-ruler-pencil'
+        icontype: 'nc-icon nc-vector'
     },{
         path: '/panel-lightweekend',
         title: 'Panel Lightweekend',
         type: 'link',
         icontype: 'nc-icon nc-bulb-63'
     },{
-        path: '/lightweekend',
+        path: '/pages/lightweekend',
         title: 'Lightweekend',
         type: 'link',
         icontype: 'nc-icon nc-bulb-63'
