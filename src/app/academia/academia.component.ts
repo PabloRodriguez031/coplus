@@ -71,7 +71,7 @@ export class AcademiaComponent implements OnInit {
     this.notificationsService.showConfirmationSwal().then(resultado => {
       if(resultado.value){
         this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
-        this.apiService.deleteDocumento(this.coleccion, documento).then(respuesta => {          
+        this.apiService.deleteDocumento(this.coleccion, documento).then(respuesta => {            
           this.notificationsService.showSwal('Borrado', 'El discipulado ha sido borrado con éxito', 'success');
         }).catch(error => {
           console.log(error);
@@ -91,6 +91,10 @@ export class AcademiaComponent implements OnInit {
 
   agregarUsuario(documento){
     this.router.navigate(['/agregar-usuario-academia',documento.id])
+  }
+
+  reporteNotas(documento){
+    this.router.navigate(['/reporte-notas',documento.id])
   }
 
   rerenderDatatable() {

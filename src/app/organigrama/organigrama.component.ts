@@ -1,109 +1,141 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../servicios/api.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ApiService} from '../servicios/api.service';
+import {Router, ActivatedRoute} from '@angular/router';
 import * as firebase from 'firebase';
-import { NotificationsService } from 'app/servicios/notifications.service';
+import {NotificationsService} from 'app/servicios/notifications.service';
 
 @Component({
-  selector: 'app-organigrama',
-  templateUrl: './organigrama.component.html',
-  styleUrls: ['./organigrama.component.css']
+    selector: 'app-organigrama',
+    templateUrl: './organigrama.component.html',
+    styleUrls: ['./organigrama.component.css']
 })
 export class OrganigramaComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, public apiService: ApiService, private router: Router, private notificationsService: NotificationsService) { }
 
-  redes :any = [];
-  discipulados :any = [];
-  grupos :any = [];
+    redes = [];
+    discipulados = [];
+    grupos = [];
 
-  organigrama = [];
+    organigrama;
+
+    constructor(private route: ActivatedRoute, public apiService: ApiService, private router: Router, private notificationsService: NotificationsService) {
+    }
 
 
-  ngOnInit() {
-    firebase.firestore().collection('red').onSnapshot((snapshot) => {
-      this.redes = [] as any;
-      snapshot.forEach(doc => {
-          this.redes.push({
-              id: doc.id,
-              data: doc.data()
-          });
-      });
+    ngOnInit() {
+        firebase.firestore().collection('red').onSnapshot((snapshot) => {
+            this.redes = [] as any;
+            snapshot.forEach(doc => {
+                this.redes.push({
+                    id: doc.id,
+                    data: doc.data()
+                });
+            });
 
-      firebase.firestore().collection('discipulado').onSnapshot((snapshot) => {
-        this.discipulados = [] as any;
-        snapshot.forEach(doc => {
-            this.discipulados.push({
-                id: doc.id,
-                data: doc.data()
+            firebase.firestore().collection('discipulado').onSnapshot((snapshotDiscipulado) => {
+                this.discipulados = [] as any;
+                snapshotDiscipulado.forEach(doc => {
+                    this.discipulados.push({
+                        id: doc.id,
+                        data: doc.data()
+                    });
+                });
+
+                firebase.firestore().collection('grupo').onSnapshot((snapshotGrupos) => {
+                    this.grupos = [] as any;
+                    snapshotGrupos.forEach(doc => {
+                        this.grupos.push({
+                            id: doc.id,
+                            data: doc.data()
+                        });
+                    });
+
+
+                    this.discipulados.forEach(discipulado => {
+                        discipulado['data']['grupos'] = [];
+                        this.grupos.forEach(grupo => {
+                            if (grupo['data']['discipulado']) {
+                                if (grupo['data']['discipulado'] === discipulado.id) {
+                                    discipulado['data']['grupos'].push(grupo);
+                                }
+                            }
+                        })
+                    });
+
+
+                    this.discipulados.forEach(discipulado => {
+                        if (!discipulado['data']['discipulados']) {
+                            discipulado['data']['discipulados'] = [];
+                        }
+                        this.discipulados.forEach(hijo => {
+                            if (hijo['data']['discipuladoPadre']) {
+                                if (hijo['data']['discipuladoPadre'] === discipulado.id) {
+                                    hijo['data']['is_son'] = true;
+                                    discipulado['data']['discipulados'].push(hijo);
+                                }
+                            }
+                        });
+                    });
+
+
+                    this.discipulados = this.discipulados.filter(discipulado => {
+                        return !discipulado['data']['is_son']
+                    });
+
+
+                    this.redes.forEach(red => {
+                        red['data']['discipulados'] = [];
+                        this.discipulados.forEach(discipulado => {
+                            if (red.id === discipulado['data']['red']) {
+                                red['data']['discipulados'].push(discipulado);
+                            }
+                        })
+                    });
+                    console.log(this.redes);
+                    this.createOrganizationChart();
+                });//termina consulta grupos
             });
         });
+    }
 
-        firebase.firestore().collection('grupo').onSnapshot((snapshot) => {
-          this.grupos = [] as any;
-          snapshot.forEach(doc => {
-              this.grupos.push({
-                  id: doc.id,
-                  data: doc.data()
-              });
-          });
+    createOrganizationChart() {
+        this.organigrama = '<ul>';
 
-          this.organigrama = [];
+        this.redes.forEach(red => {
+            this.organigrama += '<li>';
 
-          this.redes.forEach((red, index_red) => {
-            const _red = [];
-            _red.push(red);
-            _red['discipulados'] = [];
-  
-            this.discipulados.forEach((discipulado, index_disc) => {
-              if(discipulado.data['red'] === red.id && discipulado.data['discipuladoPadre'] === ''){
-                  
-                const _disc = [];
-                _disc.push(discipulado);
-                _disc['discipulados_hijos'] = [];
-                _disc['grupos'] = [];
-  
-                this.discipulados.forEach((discipulado_hijo, index_disc_hijo) => {
-                    
-                  if(discipulado_hijo.data['discipuladoPadre'] === discipulado.id){
-                    _disc['discipulados_hijos'].push(discipulado_hijo);
-                    _disc['discipulados_hijos']['grupos'] = [];
-                    _disc['discipulados_hijos']['discipulados_hijos'] = [];
+            this.organigrama += '<b>Red</b> - ' + red['data']['descripcion'];
 
-                    this.grupos.forEach((grupo, index_grupo) => {                    
-                      if(grupo.data['discipulado'] === discipulado_hijo.id ){                          
-                        _disc['discipulados_hijos']['grupos'].push(grupo);
-                      }
-                    })
+            if (red['data']['discipulados'].length > 0) {
+                red['data']['discipulados'].forEach(discipulado => {
+                    this.createDiscipuladoUl(discipulado['data']);
+                });
+            }
+            this.organigrama += '</li>';
+        });
+        this.organigrama += '</ul>';
 
-                    this.discipulados.forEach((discipulado_hijo2, index_disc_hijo) => {
-                      if(discipulado_hijo2.data['discipuladoPadre'] === discipulado_hijo.id){
-                        _disc['discipulados_hijos']['discipulados_hijos'].push(discipulado_hijo2);
-                      }
-                    })
-                  }
-                })
-  
-                this.grupos.forEach((grupo, index_grupo) => {                    
-                  if(grupo.data['discipulado'] === discipulado.id ){                      
-                    _disc['grupos'].push(grupo);
-                  }
-                })
-  
-                  _red['discipulados'].push(_disc);
-                  
-              }//termina if de discipulados
-            })//terminara for each discipulados
-             this.organigrama.push(_red);
-          })//termina fro each redes
-  
-          console.log(this.organigrama);
+        console.log(this.organigrama);
+    }
 
-        });//termina consulta grupos
-      });
-    });
-  }
-  
+    createDiscipuladoUl(discipulado) {
+
+        this.organigrama += '<ul>';
+        this.organigrama += '<b>Discipulado</b> - ' + discipulado['discipulado'];
+        if (discipulado['discipulados']. length > 0) {
+            discipulado['discipulados'].forEach(_discipulado => {
+                this.createDiscipuladoUl(_discipulado['data']);
+            });
+        }
+
+        if (discipulado['grupos'].length > 0) {
+            this.organigrama += '<ul>';
+            discipulado['grupos'].forEach(grupo => {
+                this.organigrama += '<b>Grupo</b> - ' + grupo['data']['nombre'];
+            });
+            this.organigrama += '</ul>';
+        }
+        this.organigrama += `</ul>`;
+    }
+
 }
-
-

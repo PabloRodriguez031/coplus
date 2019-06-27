@@ -41,13 +41,16 @@
                         <td>{{documento.data['pensum']}}</td>
                         <td class="text-right">
                             <button class="btn btn-warning btn-sm acciontabla" (click)="editDocumento(documento)">
-                                <i class="nc-icon nc-zoom-split"></i>
+                              <i class="nc-icon nc-zoom-split"></i>
                             </button>
                             <button class="btn btn-info btn-sm acciontabla" (click)="agregarUsuario(documento)">
                               <i class="nc-icon nc-single-02"></i>
                             </button>
                             <button class="btn btn-info btn-sm acciontabla" (click)="ingresarNotas(documento)">
-                                <i class="nc-icon nc-single-copy-04"></i>
+                              <i class="nc-icon nc-single-copy-04"></i>
+                            </button>
+                            <button class="btn btn-info btn-sm acciontabla" (click)="reporteNotas(documento)">
+                              <i class="nc-icon nc-box"></i>
                               </button>
                             <button class="btn btn-danger btn-sm acciontabla" (click)="deleteDocumento(documento)">
                                 <i class="nc-icon nc-simple-remove"></i>

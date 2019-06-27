@@ -11,6 +11,7 @@ import { AcademiaEditarComponent } from './academia-editar/academia-editar.compo
 import { NotasComponent } from './notas/notas.component';
 import { PensumComponent } from './pensum/pensum.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ReporteNotasComponent } from './reporte-notas/reporte-notas.component';
 
 @NgModule({
     imports: [
@@ -19,7 +20,7 @@ import { DataTablesModule } from 'angular-datatables';
         FormsModule,
         DataTablesModule
     ],
-    declarations: [AcademiaComponent, AcademiaFormComponent, AgregarUsuarioComponent, AcademiaEditarComponent, NotasComponent, PensumComponent]
+    declarations: [AcademiaComponent, AcademiaFormComponent, AgregarUsuarioComponent, AcademiaEditarComponent, NotasComponent, PensumComponent, ReporteNotasComponent]
 })
 
 export class AcademiaModule {}

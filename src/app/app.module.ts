@@ -17,10 +17,12 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { AppRoutes } from './app.routing';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import { ApiService } from './servicios/api.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
     imports:      [
@@ -34,14 +36,15 @@ import { ApiService } from './servicios/api.service';
         FooterModule,
         FixedPluginModule,        
         AngularFirestoreModule.enablePersistence(),
-        AngularFireModule.initializeApp(environment.firebase)
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule
     ],
     declarations: [
         AppComponent,
         AdminLayoutComponent,
         AuthLayoutComponent
     ],
-    providers: [ApiService],
+    providers: [ApiService, AuthService],
     bootstrap:    [ AppComponent ]
 })
 

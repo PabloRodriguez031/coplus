@@ -1,0 +1,45 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Reporte de Notas Academias</h4>
+        </div>
+        <div class="card-body ">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a [routerLink]="['/academia']" routerLinkActive="active">Listado Academias</a></li>
+                  <li class="breadcrumb-item"><a>Reporte de Notas Academia</a></li>
+                </ol>
+              </nav>             
+          <div class="col-md-12">            
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Estudiante</th>
+                    <th>Modulo I</th>
+                    <th>Modulo II</th>
+                    <th>Modulo III</th>
+                    <th>Modulo IV</th>
+                  </tr>                
+                </thead>
+                
+                <tbody>
+                  <tr *ngFor="let estudiante of academias.data['estudiantes']">
+                    <td>{{ estudiante.nombreEstudiante }}</td>                  
+                    <td *ngFor="let nota of estudiante.notas">{{nota.modulo1}}</td>
+                    <td *ngFor="let nota of estudiante.notas">{{nota.modulo2}}</td>
+                    <td *ngFor="let nota of estudiante.notas">{{nota.modulo3}}</td>
+                    <td *ngFor="let nota of estudiante.notas">{{nota.modulo4}}</td>                  
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+      </div>
+    </div>  
+  </div>
+
+</div>

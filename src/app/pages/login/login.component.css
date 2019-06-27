@@ -1,0 +1,19 @@
+.content{
+    padding-top: 10vh!important;
+}
+
+.fondo{
+    background-image: url('fondo.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 1080px;
+}
+
+.amarillo{
+    background-color: #FBDE02;
+}
+
+.card label{
+    color: #000;
+}

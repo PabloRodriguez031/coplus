@@ -6,6 +6,7 @@ import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.compo
 import { AcademiaEditarComponent } from './academia-editar/academia-editar.component';
 import { NotasComponent } from './notas/notas.component';
 import { PensumComponent } from './pensum/pensum.component';
+import { ReporteNotasComponent } from './reporte-notas/reporte-notas.component';
 
 export const AcademiaRoutes: Routes = [{
     path: '',
@@ -24,6 +25,9 @@ export const AcademiaRoutes: Routes = [{
     },{
         path: 'ingreso-notas/:id',
         component: NotasComponent
+    },{
+        path: 'reporte-notas/:id',
+        component: ReporteNotasComponent
     },{
         path: 'pensum',
         component: PensumComponent

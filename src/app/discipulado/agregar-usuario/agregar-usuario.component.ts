@@ -44,6 +44,9 @@ export class AgregarUsuarioComponent implements OnInit {
   
 
   ngOnInit() {
+
+    this.dtOptions = environment.dtOptions;
+    this.isLoading = true;
     
     this.documentoId = this.route.snapshot.params['id'];
     this.apiService.getDocumentoById(this.coleccion2, this.documentoId).then(discipulado => {
@@ -51,6 +54,43 @@ export class AgregarUsuarioComponent implements OnInit {
         id: discipulado.id,
         data: discipulado.data()
       };
+
+        //Modal lider discipulado
+        
+        firebase.firestore().collection('usuario').where('graduado', '==', 'Si').
+        where('red', '==', this.documentos2.data['red']).
+        where('liderDiscipuladoId', '==', '').
+        where('discipuloId', '==', '').
+        onSnapshot((snapshot) => {
+          this.lideresRed = [] as any;
+          snapshot.forEach(doc => {
+              this.lideresRed.push({
+                  id: doc.id,
+                  data: doc.data()
+              });
+            });              
+            if(this.isLoading){
+              this.isLoading = false;
+              this.dtTrigger.next(false);  
+            }else{
+              this.rerenderDatatable();
+            }        
+          });
+
+        //Modal discipulos 
+            firebase.firestore().collection('usuario').where('red', '==', this.documentos2.data['red']).
+            where('graduado', '==', 'Si').
+            where('discipuloId', '==', '').
+            where('liderDiscipuladoId', '==', '').
+            onSnapshot((snapshot) => {
+              this.usuariosRed = [] as any;
+              snapshot.forEach(doc => {
+                  this.usuariosRed.push({
+                      id: doc.id,
+                      data: doc.data()
+                  });
+                });
+              });
       
     });
 
@@ -75,43 +115,12 @@ export class AgregarUsuarioComponent implements OnInit {
               data: usuariosDiscipulado.data()
           });
         });
-        if(this.isLoading){
-          this.isLoading = false;
-          this.dtTrigger2.next(false);  
-        }else{
-          this.rerenderDatatable();
-        } 
     });
 
   }
 
   openForm() {
-
-    this.dtOptions = environment.dtOptions;
-    this.isLoading = true;
-
-    firebase.firestore().collection('usuario').where('graduado', '==', 'Si').
-    where('red', '==', this.documentos2.data['red']).
-    where('liderDiscipuladoId', '==', '').
-    where('discipuloId', '==', '').
-    onSnapshot((snapshot) => {
-      this.lideresRed = [] as any;
-      snapshot.forEach(doc => {
-          this.lideresRed.push({
-              id: doc.id,
-              data: doc.data()
-          });
-        });
-
-        if(this.isLoading){
-          this.isLoading = false;
-          this.dtTrigger.next(false);  
-        }else{
-          this.rerenderDatatable();
-        }    
-
-        $('#formModal').modal('toggle');
-    });
+      $('#formModal').modal('toggle');
   }
 
   agregarLider(id){      
@@ -183,61 +192,77 @@ export class AgregarUsuarioComponent implements OnInit {
   }
 
   openForm2() {
-    firebase.firestore().collection('usuario').where('red', '==', this.documentos2.data['red']).
-    where('graduado', '==', 'Si').
-    where('discipuloId', '==', '').
-    where('liderDiscipuladoId', '==', '').
-    onSnapshot((snapshot) => {
-      this.usuariosRed = [] as any;
-      snapshot.forEach(doc => {
-          this.usuariosRed.push({
-              id: doc.id,
-              data: doc.data()
-          });
-        });
-        $('#formModal2').modal('toggle');
-    });
-  }
+      $('#formModal2').modal('toggle');
+    }
 
   agregarUsuario(id){
+
     this.notificationsService.showConfirmationSwal().then(resultado => {
       if(resultado.value){
         this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
-
         if(!this.documentos2.data['discipulosIds']){
           this.documentos2.data['discipulosIds'] = [];
-        }      
-        this.documentos2.data['discipulosIds'].push({
-          id: id
-        });          
+        }
+
+        this.documentos2.data['discipulosIds'].push(id);
+
         this.apiService.updateDocumento(this.coleccion2, { 
           discipulosIds: this.documentos2.data['discipulosIds']
         }, this.documentoId).then(respuesta => {
-          this.usuariosRed.splice(this.usuariosRed.findIndex(discipulo => {
-            return discipulo.id === id;
-          }),1);
-          
-          this.notificationsService.showSwal('Editado', 'El usuario ha sido agregado con éxito', 'success');
+
+          this.apiService.updateDocumento(this.coleccion, { 
+            discipuloId: this.documentos2.id
+          }, id).catch(error => {
+            console.log(error);
+            this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
+          })
+
+          this.notificationsService.showSwal('Editado', 'El discipulo ha sido agregado con éxito', 'success');
         }).catch(error => {
           console.log(error);
           this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
         })
 
-        
-        this.apiService.updateDocumento(this.coleccion, { 
-          discipuloId: this.documentos2.id
-        }, id).then(respuesta => {
-          this.usuariosRed.splice(this.usuariosRed.findIndex(discipulo => {
-            return discipulo.id === id;
-          }),1);
-          
-          this.notificationsService.showSwal('Editado', 'El usuario ha sido agregado con éxito', 'success');
-        }).catch(error => {
-          console.log(error);
-          this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
-        })
       }
     });
+
+
+    // this.notificationsService.showConfirmationSwal().then(resultado => {
+    //   if(resultado.value){
+    //     this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
+
+    //     if(!this.documentos2.data['discipulosIds']){
+    //       this.documentos2.data['discipulosIds'] = [];
+    //     }      
+    //     this.documentos2.data['discipulosIds'].push(id);          
+    //     this.apiService.updateDocumento(this.coleccion2, { 
+    //       discipulosIds: this.documentos2.data['discipulosIds']
+    //     }, this.documentoId).then(respuesta => {
+    //       this.usuariosRed.splice(this.usuariosRed.findIndex(discipulo => {
+    //         return discipulo.id === id;
+    //       }),1);
+          
+    //       this.notificationsService.showSwal('Editado', 'El usuario ha sido agregado con éxito', 'success');
+    //     }).catch(error => {
+    //       console.log(error);
+    //       this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
+    //     })
+
+        
+    //     this.apiService.updateDocumento(this.coleccion, { 
+    //       discipuloId: this.documentos2.id
+    //     }, id).then(respuesta => {
+    //       this.usuariosRed.splice(this.usuariosRed.findIndex(discipulo => {
+    //         return discipulo.id === id;
+    //       }),1);
+          
+    //       this.notificationsService.showSwal('Editado', 'El usuario ha sido agregado con éxito', 'success');
+    //     }).catch(error => {
+    //       console.log(error);
+    //       this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
+    //     })
+    //   }
+    // });
   }
 
   deleteUsuario(id, index){
