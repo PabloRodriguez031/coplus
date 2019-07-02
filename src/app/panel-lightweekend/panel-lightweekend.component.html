@@ -23,6 +23,7 @@
                       <th>Fecha</th>
                       <th>Asiste a grupo</th>
                       <th>Red</th>
+                      <th>Estado</th>
                       <th class="text-right">Acción</th>
                     </tr>
                   </thead>
@@ -36,10 +37,16 @@
                       <td>{{documento.data['genero']}}</td>
                       <td>{{documento.data['estado_civil']}}</td>
                       <td>{{documento.data['direccion']}}</td>
-                      <td>{{documento.data['fecha']}}</td>
+                      <td>{{documento.data['fecha_creacion']|date:'dd-MM-yyyy'}}</td>
                       <td>{{documento.data['asiste_grupo']}}</td>
                       <td>{{documento.data['red_nombre']}}</td>
+                      <td>{{documento.data['pago']}}</td>
                       <td class="text-right">
+                        <div *ngIf="documento.data['pago'] === 'Pendiente'">
+                          <button class="btn btn-success btn-sm acciontabla" (click)="yaPago(documento.id)">
+                              <i class="nc-icon nc-money-coins"></i>
+                          </button>                          
+                        </div>
                           <button class="btn btn-info btn-sm acciontabla" (click)="enviarCorreo(documento.data['correo'])">
                               <i class="nc-icon nc-share-66"></i>
                           </button>

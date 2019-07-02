@@ -51,7 +51,7 @@ export class NotasComponent implements OnInit {
         }
 
         const indice = this.documentos2.data['estudiantes'].findIndex(estudiante =>{
-          return estudiante.id === id;
+          return estudiante.id_estudiante === id;
         })
 
         if(!this.documentos2.data['estudiantes'][indice]['notas']){

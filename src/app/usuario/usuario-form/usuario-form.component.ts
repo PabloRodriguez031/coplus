@@ -72,7 +72,7 @@ export class UsuarioFormComponent implements OnInit {
       if(resultado.value){
         this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
         
-        this.authService.signUpWithEmail(this.correo, this.password)      
+        this.authService.SignUp(this.correo, this.password)      
         .then(() => {
           var uid = firebase.auth().currentUser.uid;
           this.apiService.addDocumento(this.coleccion, {            

@@ -68,7 +68,8 @@ export class AgregarUsuarioComponent implements OnInit {
                 id: usuariosAcademia.id,
                 data: usuariosAcademia.data()
             });
-          });      
+          });   
+                    
       });
 
       //Modals
@@ -97,18 +98,6 @@ export class AgregarUsuarioComponent implements OnInit {
         
         });  
 
-        firebase.firestore().collection('usuario').where('red', '==', this.documentos2.data['red']).
-        where('graduado', '==', 'No').
-        where('estudiantesIds', '==', '').
-        onSnapshot((snapshot) => {
-          this.usuariosRed = [] as any;
-          snapshot.forEach(doc => {
-              this.usuariosRed.push({
-                  id: doc.id,
-                  data: doc.data()
-              });
-            });
-          });
     });
   
   }
@@ -162,6 +151,11 @@ export class AgregarUsuarioComponent implements OnInit {
 
         this.lideresAcademia.splice(index, 1);
 
+        this.documentos2.data['lideresIds'].splice(this.documentos2.data['lideresIds'].findIndex(lider=> {
+          return lider.id === id;
+        }),1);
+
+
         let lideresRestantes = [];
 
         this.lideresAcademia.forEach(lideres =>{
@@ -185,7 +179,21 @@ export class AgregarUsuarioComponent implements OnInit {
     });
   }
 
-  openForm2() {    
+  openForm2() {  
+
+    firebase.firestore().collection('usuario').where('red', '==', this.documentos2.data['red']).
+    where('graduado', '==', 'No').
+    where('estudiantesIds', '==', '').
+    onSnapshot((snapshot) => {
+      this.usuariosRed = [] as any;
+      snapshot.forEach(doc => {
+          this.usuariosRed.push({
+              id: doc.id,
+              data: doc.data()
+          });
+        });
+      });
+
       $('#formModal2').modal('toggle');
   }
 
@@ -200,7 +208,7 @@ export class AgregarUsuarioComponent implements OnInit {
         }        
         
         this.documentos2.data['estudiantes'].push({
-          id: id
+          id_estudiante: id
         });
         
         this.apiService.updateDocumento(this.coleccion2, { 
@@ -221,7 +229,9 @@ export class AgregarUsuarioComponent implements OnInit {
             this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
           })
           
+          $('#formModal2').modal('toggle');
           this.notificationsService.showSwal('Editado', 'El usuario ha sido agregado con éxito', 'success');
+
         }).catch(error => {
           console.log(error);
           this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
@@ -237,6 +247,10 @@ export class AgregarUsuarioComponent implements OnInit {
       if(resultado.value){
 
         this.usuariosAcademia.splice(index, 1);
+        
+        this.documentos2.data['estudiantes'].splice(this.documentos2.data['estudiantes'].findIndex(estudiante=> {
+            return estudiante.id === id;
+        }),1);
 
         let usuariosRestantes = [];
 
@@ -247,8 +261,8 @@ export class AgregarUsuarioComponent implements OnInit {
         this.apiService.updateDocumento(this.coleccion, { 
           estudiantesIds: ''
         }, id).then(respuesta => {
+
           this.apiService.updateDocumento('academia', {
-            estudiantesIds: usuariosRestantes,
             estudiantes: usuariosRestantes
           }, this.documentoId)
           

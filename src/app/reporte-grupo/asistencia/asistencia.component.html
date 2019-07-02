@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Lista de Asistencia Discipulado</h4>
+          <h4 class="card-title">Lista de Asistencia Grupo</h4>
         </div>
         <div class="card-body "> 
             <nav aria-label="breadcrumb">
@@ -23,19 +23,26 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let usuarioDicipulado of usuariosDicipulado">
-                    <td>{{usuarioDicipulado.data['nombre']}} {{usuarioDicipulado.data['apellido']}}</td>
-                    <td class="text-right">
-                      <button class="btn btn-success btn-sm acciontabla" (click)="marcarAsistencia(usuarioDicipulado.id)">
-                        Tomar asistencia <i class="nc-icon nc-check-2"></i> 
-                      </button>                  
-                  </td>
+                <tr *ngFor="let grupo of documentos2.data.gruposIds">
+                  <td>{{ grupo.id }}</td>
+                  <td *ngFor="let asistencia of grupo.asistencias | slice: -1" class="text-right">
+                    <div *ngIf="asistencia.reporte === reporteId; else content">                      
+                        <button class="btn btn-success btn-sm acciontabla" disabled (click)="marcarAsistencia(grupo.id)">
+                            Tomar asistencia <i class="nc-icon nc-check-2"></i> 
+                          </button>    
+                    </div>
+                    <ng-template #content>
+                        <button class="btn btn-success btn-sm acciontabla" ng-disabled="checked" (click)="marcarAsistencia(grupo.id)">
+                            Tomar asistencia <i class="nc-icon nc-check-2"></i> 
+                          </button>    
+                    </ng-template>
+                  </td>                
                 </tr>
               </tbody>
             </table>
             <p *ngIf="isLoading" class="text-center">Cargando datos... <i class="fa fa-spinner fa-spin"
               style="font-size:15px;"></i></p>
-            <p *ngIf="usuariosDicipulado.length === 0 && !isLoading" class="text-center"> No hay datos para mostrar.</p>
+            <p *ngIf="documentos2.length === 0 && !isLoading" class="text-center"> No hay datos para mostrar.</p>
             </div>
           </div>
 

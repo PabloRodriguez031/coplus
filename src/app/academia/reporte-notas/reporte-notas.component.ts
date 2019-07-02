@@ -42,10 +42,10 @@ export class ReporteNotasComponent implements OnInit {
                 data: usuarios.data()
             });
           });     
-          
+          console.log(this.academias.data.estudiantes)
           this.academias.data.estudiantes.forEach(estudiante => {
             this.usuarios.forEach(usuario => {
-              if(estudiante.id === usuario.id){
+              if(estudiante.id_estudiante === usuario.id){
                 estudiante.nombreEstudiante = usuario.data['nombre'] + ' ' + usuario.data['apellido'];
               }
             })

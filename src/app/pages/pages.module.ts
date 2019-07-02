@@ -8,7 +8,8 @@ import { PagesRoutes } from './pages.routing';
 import { RegisterComponent } from './register/register.component';
 import { LockComponent } from './lock/lock.component';
 import { LoginComponent } from './login/login.component';
-import { LightweekendComponent } from './lightweekend/lightweekend.component'
+import { LightweekendComponent } from './lightweekend/lightweekend.component';
+import { RecuperacionPasswordComponent } from './recuperacion-password/recuperacion-password.component'
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { LightweekendComponent } from './lightweekend/lightweekend.component'
         LoginComponent,
         RegisterComponent,
         LockComponent,
-        LightweekendComponent
+        LightweekendComponent,
+        RecuperacionPasswordComponent
     ]
 })
 

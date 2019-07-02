@@ -58,7 +58,7 @@ export class AcademiaFormComponent implements OnInit {
           anio: form.value.anio,
           pensum: form.value.pensum,
           lideresIds: [],
-          estudiantesIds: []
+          estudiantes: []
         }).then(respuesta => {
           this.notificationsService.showSwal('Creada', 'La academia ha sido creada con éxito', 'success');
           form.resetForm();

@@ -29,7 +29,11 @@ export class IglesiaFormComponent implements OnInit {
               id: doc.id,
               data: doc.data()
           });
-      });
+      })
+
+      this.usuarios.forEach(usuario => {
+        usuario.data['nombreCompleto'] = usuario.data['nombre'] + ' ' + usuario.data['apellido'] 
+      })
     });
   }
 
@@ -39,7 +43,8 @@ export class IglesiaFormComponent implements OnInit {
         this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
         this.apiService.addDocumento(this.coleccion, {
           nombre: form.value.nombre,
-          encargadoIglesia: form.value.encargadoIglesia
+          encargadoIglesia: form.value.encargadoIglesia,
+          encargadoIglesia2: form.value.encargadoIglesia2
         }).then(respuesta => {
           this.notificationsService.showSwal('Creado', 'La iglesia ha sido creada con éxito', 'success');
           form.resetForm();

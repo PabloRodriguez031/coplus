@@ -52,7 +52,6 @@ export class AuthService {
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
-        this.SendVerificationMail();
         this.SetUserData(result.user);
       }).catch((error) => {
         window.alert(error.message)
@@ -81,11 +80,6 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null && user.emailVerified !== false) ? true : false;
-  }
-
-  // Sign in with Google
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
   }
 
   // Auth logic to run auth providers

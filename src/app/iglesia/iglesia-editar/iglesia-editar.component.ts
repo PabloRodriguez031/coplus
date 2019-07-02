@@ -44,6 +44,10 @@ export class IglesiaEditarComponent implements OnInit {
                 data: doc.data()
             });
         });
+
+        this.documentos2.forEach(usuario => {
+          usuario.data['nombreCompleto'] = usuario.data['nombre'] + ' ' + usuario.data['apellido'] 
+        })
       });
     }
 

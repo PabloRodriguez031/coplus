@@ -31,6 +31,8 @@ export class LightweekendComponent implements OnInit {
     });
   }
 
+  today: number = Date.now();
+
   addDocumento(form:NgForm) {  
     this.notificationsService.showConfirmationSwal().then(resultado => {
       if(resultado.value){
@@ -44,9 +46,10 @@ export class LightweekendComponent implements OnInit {
           genero: form.value.genero,
           estado_civil: form.value.estado_civil,
           direccion: form.value.direccion,
-          fecha_nacimiento: form.value.fecha_nacimiento,
+          fecha_creacion: this.today,
           asiste_grupo: form.value.asiste_grupo,
-          red: form.value.red
+          red: form.value.red,
+          pago: 'false'
         }).then(respuesta =>{
           this.notificationsService.showSwal('Enviado', 'Los datos han sido enviados con éxito', 'success');
           form.resetForm();

@@ -2,11 +2,11 @@
   <div class="full-page section-image" filter-color="red" data-image="fondo.png">
     <div class="content fondo">
       <div class="container">
-          <div class="row">
-              <div class="col-md-12">
+          <div class="row justify-content-md-center">
+              <div class="col-md-6">
                 <div class="card">
                   <div class="card-header">
-                    <h4 class="card-title">PANEL COPLUS</h4>
+                    <h4 class="card-title text-center">PANEL COPLUS</h4>
                   </div>
                   <div class="card-body ">
                       <form #documentoForm="ngForm">
@@ -21,8 +21,12 @@
                                                                        
                         <div class="card-footer text-center">
                             <input type="button" class="btn amarillo" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
-                          </div>
-                      </form>    
+                          </div>                          
+                      </form>   
+                      
+                      <div class="forgotPassword">
+                          <a [routerLink]="['/pages/recuperacion-password']">Olvide mi contraseña</a>
+                        </div>
                   </div>
                 </div>
               </div>  

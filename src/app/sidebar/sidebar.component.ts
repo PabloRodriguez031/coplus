@@ -39,27 +39,6 @@ export const ROUTES: RouteInfo[] = [{
         type: 'link',
         icontype: 'nc-icon nc-single-02'
     },{
-        path: '/academia',
-        title: 'Academia',
-        type: 'link',
-        icontype: 'nc-icon nc-hat-3'
-    }
-    ,{
-        path: '/discipulado',
-        title: 'Discipulados',
-        type: 'sub',
-        children: [
-            {
-                path: '/discipulado',
-                title: 'Listado de discipulados',
-               ab: 'LD'
-            },{
-                path: '/reporte-discipulado',
-                title: 'Reporte discipulados',
-                 ab: 'RD'
-            }],
-        icontype: 'nc-icon nc-badge'
-    },{
         path: '/grupo',
         title: 'Grupos',
         type: 'sub',
@@ -82,6 +61,26 @@ export const ROUTES: RouteInfo[] = [{
                 ab: 'RG'
             }],
         icontype: 'nc-icon nc-shop'
+    },{
+        path: '/discipulado',
+        title: 'Discipulados',
+        type: 'sub',
+        children: [
+            {
+                path: '/discipulado',
+                title: 'Listado de discipulados',
+               ab: 'LD'
+            },{
+                path: '/reporte-discipulado',
+                title: 'Reporte discipulados',
+                 ab: 'RD'
+            }],
+        icontype: 'nc-icon nc-badge'
+    },{
+        path: '/academia',
+        title: 'Academia',
+        type: 'link',
+        icontype: 'nc-icon nc-hat-3'
     },{
         path: '/organigrama',
         title: 'Organigrama',

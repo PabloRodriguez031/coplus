@@ -17,6 +17,9 @@ export class DiscipuladoEditarComponent implements OnInit {
   documentos2 = {} as any;
   coleccion2 = 'red';
 
+  discipulados = [] as any;
+
+
   constructor(private route: ActivatedRoute, private apiService: ApiService, private notificationsService: NotificationsService) { }
 
   ngOnInit() {
@@ -44,6 +47,17 @@ export class DiscipuladoEditarComponent implements OnInit {
             });
         });
       });
+
+      
+      firebase.firestore().collection('discipulado').onSnapshot((snapshot) => {
+        this.discipulados = [] as any;
+        snapshot.forEach(doc => {
+            this.discipulados.push({
+                id: doc.id,
+                data: doc.data()
+            });
+        });
+      });
     }
 
     updateDocumento(){      
@@ -53,6 +67,7 @@ export class DiscipuladoEditarComponent implements OnInit {
           this.apiService.updateDocumento(this.coleccion, {
             discipulado: this.documento.data['discipulado'],
             red: this.documento.data['red'],
+            discipuladoPadre: this.documento.data['discipuladoPadre'],
             direccion: this.documento.data['direccion'],
             zona: this.documento.data['zona'],
             hora: this.documento.data['hora']

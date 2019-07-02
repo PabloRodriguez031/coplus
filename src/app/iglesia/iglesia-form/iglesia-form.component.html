@@ -17,15 +17,27 @@
                   <div class="form-group">
                     <input type="text" class="form-control" name="nombre" ngModel required>
                   </div>
-                  <label>Encargado</label>
+                  <label>Pastores</label>
                   <div class="form-group">
 
                       <ng-select [items]="usuarios"
-                      bindLabel="data.nombre"
+                      bindLabel="data.nombreCompleto"
                       bindValue="id"
                       ngModel
                       notFoundText="No hay resultados para esta búsqueda."
                       name="encargadoIglesia">
+                      </ng-select>
+                      
+                  </div>
+
+                  <div class="form-group">
+
+                      <ng-select [items]="usuarios"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      ngModel
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="encargadoIglesia2">
                       </ng-select>
                       
                   </div>

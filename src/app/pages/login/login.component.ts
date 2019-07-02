@@ -14,10 +14,15 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit{
 
     constructor(
+      private router: Router,
       public authService: AuthService
       ) { }
 
     ngOnInit(){}
+
+    recuperarPassword() {
+      this.router.navigate(['/recuperacion-password'])
+    }
 
     
 }

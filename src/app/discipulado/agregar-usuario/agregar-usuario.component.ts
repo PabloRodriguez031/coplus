@@ -204,8 +204,11 @@ export class AgregarUsuarioComponent implements OnInit {
           this.documentos2.data['discipulosIds'] = [];
         }
 
-        this.documentos2.data['discipulosIds'].push(id);
-
+        this.documentos2.data['discipulosIds'].push({
+          id: id,
+          asistencias: [0]
+        });
+        
         this.apiService.updateDocumento(this.coleccion2, { 
           discipulosIds: this.documentos2.data['discipulosIds']
         }, this.documentoId).then(respuesta => {

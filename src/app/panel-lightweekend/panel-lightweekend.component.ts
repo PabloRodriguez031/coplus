@@ -22,6 +22,8 @@ export class PanelLightweekendComponent implements OnInit {
   coleccion = 'light_weekend';
 
   redes :any = [];
+  documento :any  = []
+
 
   isLoading = false;
 
@@ -49,6 +51,14 @@ export class PanelLightweekendComponent implements OnInit {
                 data: doc.data()
             });
         });      
+
+        this.documentos.forEach(usuario => {
+          if(usuario.data['pago'] === 'true'){
+            usuario.data['pago'] = 'Ya pagó'
+          }else{
+            usuario.data['pago'] = 'Pendiente'
+          }
+        })
         
         this.documentos.forEach(grupo => {
         this.redes.forEach(red => {
@@ -81,6 +91,23 @@ export class PanelLightweekendComponent implements OnInit {
 
   ngOnDestroy(): void {
       this.dtTrigger.unsubscribe();
+  }
+
+
+  yaPago(id){
+    this.notificationsService.showConfirmationSwal().then(resultado => {
+      if(resultado.value){
+        this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
+        this.apiService.updateDocumento(this.coleccion, {          
+          pago: 'true'
+        }, id).then(respuesta => {
+          this.notificationsService.showSwal('Editado', 'Acción realizada con éxito', 'success');
+        }).catch(error => {
+          console.log(error);
+          this.notificationsService.showSwal('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
+        })
+      }
+    });
   }
 
 }

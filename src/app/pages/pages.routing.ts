@@ -4,6 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { LockComponent } from './lock/lock.component';
 import { LoginComponent } from './login/login.component';
 import { LightweekendComponent } from './lightweekend/lightweekend.component';
+import { RecuperacionPasswordComponent } from './recuperacion-password/recuperacion-password.component';
 
 export const PagesRoutes: Routes = [{
     path: '',
@@ -19,5 +20,8 @@ export const PagesRoutes: Routes = [{
     },{
         path: 'lightweekend',
         component: LightweekendComponent
+    },{
+        path: 'recuperacion-password',
+        component: RecuperacionPasswordComponent
     }]
 }];
