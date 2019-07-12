@@ -22,26 +22,54 @@
                   <label>Tema el cual desea reportar</label>
                   <div class="form-group">
                     <select name="tema" class="form-control" ngModel required>
-                     <option value="{{documento2.data['tema']}}" *ngFor="let documento2 of documentos2">{{documento2.data['tema_nombre']}}</option>
+                     <option value="{{tema.data['nombre']}}" *ngFor="let tema of temas">{{tema.data['nombre']}}</option>
                     </select>
-                  </div>
-                  <label>Fecha</label>
-                  <input type="date" class="form-control" name="fecha" ngModel required>
+                  </div>                  
+                  <label>Predicador</label> 
+                  <div class="form-group">
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      ngModel required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="predicador">
+                      </ng-select>  
+                  </div> 
+                  <label>Encargado de bienvenida y visión</label> 
+                  <div class="form-group">
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      ngModel required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="bienvenida_vision">
+                      </ng-select>                      
+                  </div> 
+                  <label>Encargado de ofrenda</label> 
+                  <div class="form-group">
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      ngModel required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="ofrenda">
+                      </ng-select>                        
+                  </div>  
                   <label>Asistieron</label>
                   <div class="form-group">
-                    <input type="number" class="form-control" id="total" [(ngModel)]="total" name="asistieron" min="0" required>
+                    <input type="number" class="form-control col-md-3" id="total" [(ngModel)]="total" name="asistieron" min="0" required>
                   </div> 
                   <label>Nuevos</label>
                   <div class="form-group">
-                    <input type="number" class="form-control" id="val1" [(ngModel)]="val1" name="nuevos" min="0" required>
+                    <input type="number" class="form-control col-md-3" id="val1" [(ngModel)]="val1" name="nuevos" min="0" required>
                   </div>  
                   <label>Convertidos</label>
                   <div class="form-group">
-                    <input type="number" class="form-control" id="val2"  [(ngModel)]="val2" name="convertidos" min="0" required>
+                    <input type="number" class="form-control col-md-3" id="val2"  [(ngModel)]="val2" name="convertidos" min="0" required>
                   </div>  
                   <label>Reconciliados</label>
                   <div class="form-group">
-                    <input type="number" class="form-control" id="val3"  [(ngModel)]="val3" name="reconciliados" min="0" required>
+                    <input type="number" class="form-control col-md-3" id="val3"  [(ngModel)]="val3" name="reconciliados" min="0" required>
                   </div>  
                   <label>Ofrendas</label>
                   <div class="form-group">                    

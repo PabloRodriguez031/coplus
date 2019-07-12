@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../servicios/api.service';
 import * as firebase from 'firebase';
 import { NotificationsService } from 'app/servicios/notifications.service';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-reporte-editar',
@@ -19,6 +21,9 @@ export class ReporteEditarComponent implements OnInit {
 
   documentos3 = {} as any;
   coleccion3 = 'grupo';
+
+  documentos4 = {} as any;
+  coleccion4 = 'usuario';
 
   total:number;
 
@@ -58,6 +63,17 @@ export class ReporteEditarComponent implements OnInit {
                 data: doc.data()
             });
         });
+
+        firebase.firestore().collection(this.coleccion4).onSnapshot((snapshot) => {
+          this.documentos4 = [] as any;
+          snapshot.forEach(doc => {
+              this.documentos4.push({
+                  id: doc.id,
+                  data: doc.data()
+              });
+          });
+        });
+
       });
     }
 

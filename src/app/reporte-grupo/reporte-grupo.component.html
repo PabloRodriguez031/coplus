@@ -17,6 +17,10 @@
                   <tr>
                     <th>Grupo</th>
                     <th>Tema</th>
+                    <th>Fecha</th>
+                    <th>Predicador</th>
+                    <th>Bienvenida y visión</th>
+                    <th>Encargado ofrenda</th>
                     <th>Asisitieron</th>
                     <th>Convertidos</th>
                     <th>Nuevos</th>
@@ -28,7 +32,11 @@
                 <tbody>
                   <tr *ngFor="let documento of documentos">
                       <td>{{documento.data['grupo_nombre']}}</td>
-                      <td>{{documento.data['tema_nombre']}}</td>
+                      <td>{{documento.data['tema']}}</td>
+                      <td>{{documento.data['fecha_creacion']}}</td>
+                      <td>{{documento.data['predicador_nombre']}}</td>
+                      <td>{{documento.data['bienvenida_vision_nombre']}}</td>
+                      <td>{{documento.data['ofrenda_nombre']}}</td>
                       <td>{{documento.data['asistieron']}}</td>
                       <td>{{documento.data['convertidos']}}</td>
                       <td>{{documento.data['nuevos']}}</td>

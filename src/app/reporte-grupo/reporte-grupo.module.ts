@@ -9,13 +9,16 @@ import { ReporteEditarComponent } from './reporte-editar/reporte-editar.componen
 import { ReporteFormComponent } from './reporte-form/reporte-form.component';
 import { AsistenciaComponent } from './asistencia/asistencia.component';
 import { DataTablesModule } from 'angular-datatables';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild(ReporteGrupoRoutes),
         FormsModule,
-        DataTablesModule
+        DataTablesModule,
+        NgSelectModule
     ],
     declarations: [ReporteGrupoComponent, ReporteEditarComponent, ReporteFormComponent, AsistenciaComponent]
 })

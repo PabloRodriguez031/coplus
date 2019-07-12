@@ -19,27 +19,57 @@
                      <option value="{{documento3.id}}" *ngFor="let documento3 of documentos3">{{documento3.data['nombre']}}</option>
                     </select>
                   </div>
-                  <label>Tema</label>
+                  <label>Tema el cual desea reportar</label>
                   <div class="form-group">
-                      <select name="tema" class="form-control" [(ngModel)]="documento.data['tema']" required>
-                        <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['nombre']}}</option>
-                      </select>
-                    </div>
+                    <select name="tema" class="form-control" [(ngModel)]="documento.data['tema']" required>
+                     <option value="{{documento.data['tema']}}" *ngFor="let documento of documentos">{{documento.data['tema']}}</option>
+                    </select>
+                  </div>                  
+                  <label>Predicador</label> 
+                  <div class="form-group">
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      [(ngModel)]="documento.predicador" required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="predicador">
+                      </ng-select>  
+                  </div> 
+                  <label>Encargado de bienvenida y visión</label> 
+                  <div class="form-group">
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      ngModel required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="bienvenida_vision">
+                      </ng-select>                      
+                  </div> 
+                  <label>Encargado de ofrenda</label> 
+                  <div class="form-group">
+                      <ng-select [items]="documentos4"
+                      bindLabel="data.nombreCompleto"
+                      bindValue="id"
+                      ngModel required
+                      notFoundText="No hay resultados para esta búsqueda."
+                      name="ofrenda">
+                      </ng-select>                        
+                  </div>
                     <label>Asistieron</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" min="0" name="asistieron" [(ngModel)]="documento.data['asistieron']" required>
+                      <input type="number" class="form-control col-md-3" min="0" name="asistieron" [(ngModel)]="documento.data['asistieron']" required>
                     </div> 
                     <label>Nuevos</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" min="0" name="nuevos" [(ngModel)]="documento.data['nuevos']" required>
+                      <input type="number" class="form-control col-md-3" min="0" name="nuevos" [(ngModel)]="documento.data['nuevos']" required>
                     </div>  
                     <label>Convertidos</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" min="0" name="convertidos" [(ngModel)]="documento.data['convertidos']" required>
+                      <input type="number" class="form-control col-md-3" min="0" name="convertidos" [(ngModel)]="documento.data['convertidos']" required>
                     </div>  
                     <label>Reconciliados</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" min="0" name="reconciliados" [(ngModel)]="documento.data['reconciliados']" required>
+                      <input type="number" class="form-control col-md-3" min="0" name="reconciliados" [(ngModel)]="documento.data['reconciliados']" required>
                     </div>  
                     <label>Ofrendas</label>
                     <div class="form-group">                    

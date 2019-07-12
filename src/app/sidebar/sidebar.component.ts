@@ -57,8 +57,8 @@ export const ROUTES: RouteInfo[] = [{
                 ab: 'PG'
             },{
                 path: '/reporte-grupo',
-                title: 'Reporte grupos',
-                ab: 'RG'
+                title: 'Planificacion y reporte grupos',
+                ab: 'PRG'
             }],
         icontype: 'nc-icon nc-shop'
     },{
@@ -86,6 +86,11 @@ export const ROUTES: RouteInfo[] = [{
         title: 'Organigrama',
         type: 'link',
         icontype: 'nc-icon nc-vector'
+    },{
+        path: '/calendario',
+        title: 'Calendario',
+        type: 'link',
+        icontype: 'nc-icon nc-calendar-60'
     },{
         path: '/panel-lightweekend',
         title: 'Panel Lightweekend',

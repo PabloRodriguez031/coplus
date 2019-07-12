@@ -23,6 +23,7 @@ export class ReporteGrupoComponent implements OnInit {
 
   temas :any = []; 
   grupos :any = []; 
+  usuarios :any = [];
 
   isLoading = false;
 
@@ -51,40 +52,73 @@ export class ReporteGrupoComponent implements OnInit {
             });
         });
 
+        firebase.firestore().collection('usuario').onSnapshot((snapshot) => {
+          this.usuarios = [] as any;
+          snapshot.forEach(doc => {
+              this.usuarios.push({
+                  id: doc.id,
+                  data: doc.data()
+              });
+          });
 
-      firebase.firestore().collection(this.coleccion).onSnapshot((snapshot) => {
-        this.documentos = [] as any;
-        snapshot.forEach(doc => {
-            this.documentos.push({
-                id: doc.id,
-                data: doc.data()
+          firebase.firestore().collection(this.coleccion).onSnapshot((snapshot) => {
+            this.documentos = [] as any;
+            snapshot.forEach(doc => {
+                this.documentos.push({
+                    id: doc.id,
+                    data: doc.data()
+                });
             });
-        });
 
-        this.documentos.forEach(planificacion => {
-        this.temas.forEach(tema => {
-          if(planificacion.data['tema'] === tema.id){
-            planificacion.data['tema_nombre'] = tema.data['nombre'];
+            this.documentos.forEach(planificacion => {
+            this.temas.forEach(tema => {
+              if(planificacion.data['tema'] === tema.id){
+                planificacion.data['tema_nombre'] = tema.data['nombre'];
+              }
+            });
+          });
+
+          this.documentos.forEach(grupo => {
+            this.grupos.forEach(grupos => {
+              if(grupo.data['grupo'] === grupos.id){
+                grupo.data['grupo_nombre'] = grupos.data['nombre'];
+              }
+            });
+          });
+
+          this.documentos.forEach(usuario => {
+            this.usuarios.forEach(usuarios => {
+              if(usuario.data['predicador'] === usuarios.id){
+                usuario.data['predicador_nombre'] = usuarios.data['nombre'] + ' ' + usuarios.data['apellido'] ;
+              }
+            })
+          })
+
+          this.documentos.forEach(usuario => {
+            this.usuarios.forEach(usuarios => {
+              if(usuario.data['bienvenida_vision'] === usuarios.id){
+                usuario.data['bienvenida_vision_nombre'] = usuarios.data['nombre'] + ' ' + usuarios.data['apellido'] ;
+              }
+            })
+          })
+
+          this.documentos.forEach(usuario => {
+            this.usuarios.forEach(usuarios => {
+              if(usuario.data['ofrenda'] === usuarios.id){
+                usuario.data['ofrenda_nombre'] = usuarios.data['nombre'] + ' ' + usuarios.data['apellido'] ;
+              }
+            })
+          })
+
+          if(this.isLoading){
+            this.isLoading = false;
+            this.dtTrigger.next(false);  
+          }else{
+            this.rerenderDatatable();
           }
-        });
-      });
 
-      this.documentos.forEach(grupo => {
-        this.grupos.forEach(grupos => {
-          if(grupo.data['grupo'] === grupos.id){
-            grupo.data['grupo_nombre'] = grupos.data['nombre'];
-          }
-        });
-      });
-
-      if(this.isLoading){
-        this.isLoading = false;
-        this.dtTrigger.next(false);  
-      }else{
-        this.rerenderDatatable();
-      }   
-
-        });
+          });
+        });        
       });
     });  
   }

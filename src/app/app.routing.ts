@@ -52,6 +52,9 @@ export const AppRoutes: Routes = [{
         },{
             path: '',
             loadChildren: './organigrama/organigrama.module#OrganigramaModule'
+        },{
+            path: '',
+            loadChildren: './calendario/calendario.module#CalendarioModule'
         }]
         },{
             path: '',

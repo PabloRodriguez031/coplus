@@ -16,10 +16,13 @@ export class ReporteFormComponent implements OnInit {
   coleccion = 'reporte_grupo';
 
   documentos2 = {} as any;
-  coleccion2 = 'planificacion_grupo';
+  coleccion2 = 'predica';
 
   documentos3 = {} as any;
   coleccion3 = 'grupo';
+
+  documentos4 = {} as any;
+  coleccion4 = 'usuario';
 
 
   temas :any = []; 
@@ -44,24 +47,6 @@ export class ReporteFormComponent implements OnInit {
           });
       });
 
-      firebase.firestore().collection(this.coleccion2).onSnapshot((snapshot) => {
-        this.documentos2 = [] as any;
-        snapshot.forEach(doc => {
-            this.documentos2.push({
-                id: doc.id,
-                data: doc.data()
-            });
-        });
-
-        this.documentos2.forEach(planificacion => {
-        this.temas.forEach(tema => {
-          if(planificacion.data['tema'] === tema.id){
-            planificacion.data['tema_nombre'] = tema.data['nombre'];
-          }
-        });
-      });
-      });
-
       firebase.firestore().collection(this.coleccion3).onSnapshot((snapshot) => {
         this.documentos3 = [] as any;
         snapshot.forEach(doc => {
@@ -71,8 +56,26 @@ export class ReporteFormComponent implements OnInit {
             });
         });
       });
+
+      firebase.firestore().collection(this.coleccion4).where("graduado", "==", "Si").onSnapshot((snapshot) => {
+        this.documentos4 = [] as any;
+        snapshot.forEach(doc => {
+            this.documentos4.push({
+                id: doc.id,
+                data: doc.data()
+            });
+        });
+        
+        this.documentos4.forEach(usuario => {
+          usuario.data['nombreCompleto'] = usuario.data['nombre'] + ' ' + usuario.data['apellido'];        
+        });
+  
+      });
+
     });  
   }
+
+  today: number = Date.now();
 
   addDocumento(form:NgForm) {  
     this.notificationsService.showConfirmationSwal().then(resultado => {
@@ -84,13 +87,16 @@ export class ReporteFormComponent implements OnInit {
           this.apiService.addDocumento(this.coleccion, {
             grupo: form.value.grupo,
             tema: form.value.tema,
+            fecha_creacion: this.today,
+            predicador: form.value.predicador,
+            bienvenida_vision: form.value.bienvenida_vision,
+            ofrenda: form.value.ofrenda,
             asistieron: form.value.asistieron,
             nuevos: form.value.nuevos,
             convertidos: form.value.convertidos,
             reconciliados: form.value.reconciliados,
             ofrendas: form.value.ofrendas,
-            observaciones: form.value.observaciones,
-            fecha: form.value.fecha
+            observaciones: form.value.observaciones
           }).then(respuesta => {
             this.notificationsService.showSwal('Creado', 'El reporte ha sido creada con éxito', 'success');
             form.resetForm();
