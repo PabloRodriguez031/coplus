@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { ApiService } from '../servicios/api.service';
+import { Router } from '@angular/router';
+import * as firebase from 'firebase';
+import { NotificationsService } from 'app/servicios/notifications.service';
+import { Subject } from 'rxjs';
+import { environment } from 'environments/environment';
 
 declare const $: any;
 
@@ -8,6 +14,17 @@ declare const $: any;
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+
+  documentos :any = []; 
+  coleccion = 'reporte_grupo';
+  
+  totalNuevos:number;
+  totalOfrendas:number;
+  totalConvertidos:number;
+  MesActual = new Date();
+
+  constructor(public apiService: ApiService, private router: Router, private notificationsService: NotificationsService) { }
+
   public gradientStroke;
   public chartColor;
   public canvas : any;
@@ -42,6 +59,47 @@ export class DashboardComponent implements OnInit {
     }
   }
   public ngOnInit() {
+
+    firebase.firestore().collection(this.coleccion).where('grupo', '==', 'sk13UPaT7h45t1fs520O').onSnapshot((snapshot) => {
+      this.documentos = [] as any;
+      snapshot.forEach(doc => {
+          this.documentos.push({
+              id: doc.id,
+              data: doc.data()
+          });                        
+      });    
+      
+      //Calculamos el TOTAL 
+      this.totalNuevos = this.documentos.reduce((
+        acc,
+        obj,
+      ) => acc + (obj.data['nuevos']),
+      0);
+
+      this.totalConvertidos = this.documentos.reduce((
+        acc,
+        obj,
+      ) => acc + (obj.data['convertidos']),
+      0);
+
+      
+
+      this.totalOfrendas = this.documentos.reduce((
+        acc,
+        obj,
+      ) => acc + (obj.data['ofrendas']),
+      0);
+
+      });
+
+      
+ 
+      
+
+
+
+
+
     this.chartColor = "#FFFFFF";
 
     var cardStatsMiniLineColor = "#fff",

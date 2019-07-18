@@ -21,7 +21,7 @@
                   </div>
                   <label>Tema el cual desea reportar</label>
                   <div class="form-group">
-                    <select name="tema" class="form-control" [(ngModel)]="documento.data['tema']" required>
+                    <select name="tema" class="form-control" [(ngModel)]="documento.data['grupo']" required>
                      <option value="{{documento.data['tema']}}" *ngFor="let documento of documentos">{{documento.data['tema']}}</option>
                     </select>
                   </div>                  

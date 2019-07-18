@@ -35,18 +35,21 @@
                   </div>
                   <label>Fecha de nacimiento</label>
                   <div class="form-group">
-                    <input type="date" class="form-control" name="fecha_nacimiento" ngModel required>
+                    <input type="date" class="form-control col-md-3" name="fecha_nacimiento" ngModel required>
                   </div>           
+                  <label>¿Es pastor? &nbsp;</label>
+                  <input type="checkbox" (click)="checked = true" ngModel>
+                  <br>
                   <label>¿Es lider?</label> 
                   <div class="form-group">
-                    <select name="graduado" class="form-control" ngModel required>
+                    <select name="graduado" class="form-control col-md-3" [disabled]="checked" ngModel>
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
                   </div>
                   <label>Red a la que pertenece</label> 
                   <div class="form-group">
-                    <select name="red" class="form-control" ngModel required>
+                    <select name="red" class="form-control col-md-3" [disabled]="checked" ngModel>
                       <option value="{{documento2.id}}" *ngFor="let documento2 of documentos2">{{documento2.data['descripcion']}}</option>
                     </select>
                   </div>

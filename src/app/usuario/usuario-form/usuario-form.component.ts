@@ -31,6 +31,7 @@ export class UsuarioFormComponent implements OnInit {
   correo = '';
   password = '';
 
+  checked = false;
 
   constructor(public apiService: ApiService, private notificationsService: NotificationsService,
     public authService: AuthService, private router: Router) { }

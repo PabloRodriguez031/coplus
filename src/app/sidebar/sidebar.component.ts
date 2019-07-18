@@ -52,10 +52,6 @@ export const ROUTES: RouteInfo[] = [{
                 title: 'Predicas',
                 ab: 'P'
             },{
-                path: '/planificacion-grupo',
-                title: 'Planificacion grupos',            
-                ab: 'PG'
-            },{
                 path: '/reporte-grupo',
                 title: 'Planificacion y reporte grupos',
                 ab: 'PRG'

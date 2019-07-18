@@ -41,146 +41,166 @@
                         <div id="my-tab-content" class="tab-content">
                           <div class="tab-pane active" id="modulo1" role="tabpanel" aria-expanded="true">
 
-                            <form #documentoForm="ngForm" (ngSubmit)="addDocumento(documentoForm)">
+                            <form #documentoForm="ngForm" (ngSubmit)="updateModuloI()">
                                 <h4>Módulo 1</h4> <br>
                                 <h5>Semana 1</h5> <br>
                                 <label>Actividad</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
+                                  <input type="text" class="form-control" name="actividad_semana1_modulo1" [(ngModel)]="pensum.data['actividad_semana1_modulo1']">
+                                  <textarea class="form-control" name="desc_actividad_semana1_modulo1" [(ngModel)]="pensum.data['desc_actividad_semana1_modulo1']"></textarea>
                                 </div>
 
                                 <label>Temas y dinámicas</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                  <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                  <input class="form-control" type="text" name="tema_semana1_modulo1" [(ngModel)]="pensum.data['tema_semana1_modulo1']">
+                                  <textarea class="form-control" name="desc_tema_semana1_modulo1" [(ngModel)]="pensum.data['desc_tema_semana1_modulo1']" ></textarea>
+                                  <input class="form-control" type="text" name="dinamica_semana1_modulo1" [(ngModel)]="pensum.data['dinamica_semana1_modulo1']" >
+                                  <textarea class="form-control" name="desc_dinamica_semana1_modulo1" [(ngModel)]="pensum.data['desc_dinamica_semana1_modulo1']" ></textarea>
                                 </div>
 
                                 <label>Convivencia y consolidación</label> 
                                 <div class="form-group">
-                                  <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                  <textarea class="form-control" name="convivencia_semana1_modulo1" [(ngModel)]="pensum.data['convivencia_semana1_modulo1']"></textarea>
                                 </div>
 
                                 <h5>Semana 2</h5> <br>
                                 <label>Actividad</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
+                                  <input class="form-control" type="text" name="actividad_semana2_modulo1" [(ngModel)]="pensum.data['actividad_semana2_modulo1']" >
+                                  <textarea class="form-control" name="desc_actividad_semana2_modulo1" [(ngModel)]="pensum.data['desc_actividad_semana2_modulo1']"></textarea>
                                 </div>
 
                                 <label>Temas y dinámicas</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                  <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                  <input class="form-control" type="text" name="tema_semana2_modulo1" [(ngModel)]="pensum.data['tema_semana2_modulo1']" >
+                                  <textarea class="form-control" name="desc_tema_semana2_modulo1" [(ngModel)]="pensum.data['desc_tema_semana2_modulo1']" ></textarea>
+                                  <input class="form-control" type="text" name="dinamica_semana2_modulo1" [(ngModel)]="pensum.data['dinamica_semana2_modulo1']" >
+                                  <textarea class="form-control" name="desc_dinamica_semana2_modulo1" [(ngModel)]="pensum.data['desc_dinamica_semana2_modulo1']" ></textarea>
                                 </div>
 
                                 <label>Convivencia y consolidación</label> 
                                 <div class="form-group">
-                                  <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                  <textarea class="form-control" name="convivencia_semana2_modulo1" [(ngModel)]="pensum.data['convivencia_semana2_modulo1']" ></textarea>
                                 </div>
 
                                 <h5>Semana 3</h5> <br>
                                 <label>Actividad</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
+                                  <input class="form-control" type="text" name="actividad_semana3_modulo1" [(ngModel)]="pensum.data['actividad_semana3_modulo1']" >
+                                  <textarea class="form-control" name="desc_actividad_semana3_modulo1"  [(ngModel)]="pensum.data['desc_actividad_semana3_modulo1']"></textarea>
                                 </div>
 
                                 <label>Temas y dinámicas</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                  <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                  <input class="form-control" type="text" name="tema_semana3_modulo1" [(ngModel)]="pensum.data['tema_semana3_modulo1']" >
+                                  <textarea class="form-control" name="desc_tema_semana3_modulo1" [(ngModel)]="pensum.data['desc_tema_semana3_modulo1']" ></textarea>
+                                  <input class="form-control" type="text" name="dinamica_semana3_modulo1" [(ngModel)]="pensum.data['dinamica_semana3_modulo1']" >
+                                  <textarea class="form-control" name="desc_dinamica_semana3_modulo1" [(ngModel)]="pensum.data['desc_dinamica_semana3_modulo1']" ></textarea>
                                 </div>
 
                                 <label>Convivencia y consolidación</label> 
                                 <div class="form-group">
-                                  <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                  <textarea class="form-control" name="convivencia_semana3_modulo1" [(ngModel)]="pensum.data['convivencia_semana3_modulo1']" ></textarea>
                                 </div>
 
                                 <h5>Semana 4</h5> <br>
                                 <label>Actividad</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
+                                  <input class="form-control" type="text" name="actividad_semana4_modulo1" [(ngModel)]="pensum.data['actividad_semana4_modulo1']" >
+                                  <textarea class="form-control" name="desc_actividad_semana4_modulo1" [(ngModel)]="pensum.data['desc_actividad_semana4_modulo1']"></textarea>
                                 </div>
 
                                 <label>Temas y dinámicas</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                  <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                  <input class="form-control" type="text" name="tema_semana4_modulo1" [(ngModel)]="pensum.data['tema_semana4_modulo1']" >
+                                  <textarea class="form-control" name="desc_tema_semana4_modulo1" [(ngModel)]="pensum.data['desc_tema_semana4_modulo1']" ></textarea>
+                                  <input class="form-control" type="text" name="dinamica_semana4_modulo1" [(ngModel)]="pensum.data['dinamica_semana4_modulo1']" >
+                                  <textarea class="form-control" name="desc_dinamica_semana4_modulo1" [(ngModel)]="pensum.data['desc_dinamica_semana4_modulo1']" ></textarea>
                                 </div>
 
                                 <label>Convivencia y consolidación</label> 
                                 <div class="form-group">
-                                  <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                  <textarea class="form-control" name="convivencia_semana4_modulo1" [(ngModel)]="pensum.data['convivencia_semana4_modulo1']" ></textarea>
+                                </div>
+
+                                <h5>Semana 5</h5> <br>
+                                <label>Actividad</label> 
+                                <div class="form-group">
+                                  <input class="form-control" type="text" name="actividad_semana5_modulo1" [(ngModel)]="pensum.data['actividad_semana5_modulo1']" >
+                                  <textarea class="form-control" name="desc_actividad_semana5_modulo1" [(ngModel)]="pensum.data['desc_actividad_semana5_modulo1']"></textarea>
+                                </div>
+
+                                <label>Temas y dinámicas</label> 
+                                <div class="form-group">
+                                  <input class="form-control" type="text" name="tema_semana5_modulo1" [(ngModel)]="pensum.data['tema_semana5_modulo1']" >
+                                  <textarea class="form-control" name="desc_tema_semana5_modulo1" [(ngModel)]="pensum.data['desc_tema_semana5_modulo1']" ></textarea>
+                                  <input class="form-control" type="text" name="dinamica_semana5_modulo1" [(ngModel)]="pensum.data['dinamica_semana5_modulo1']" >
+                                  <textarea class="form-control" name="desc_dinamica_semana5_modulo1" [(ngModel)]="pensum.data['desc_dinamica_semana5_modulo1']" ></textarea>
+                                </div>
+
+                                <label>Convivencia y consolidación</label> 
+                                <div class="form-group">
+                                  <textarea class="form-control" name="convivencia_semana5_modulo1" [(ngModel)]="pensum.data['convivencia_semana5_modulo1']" ></textarea>
                                 </div>
 
                                 <h5>Semana 6</h5> <br>
                                 <label>Actividad</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
+                                  <input class="form-control" type="text" name="actividad_semana6_modulo1" [(ngModel)]="pensum.data['actividad_semana6_modulo1']" >
+                                  <textarea class="form-control" name="desc_actividad_semana6_modulo1"[(ngModel)]="pensum.data['desc_actividad_semana6_modulo1']"></textarea>
                                 </div>
 
                                 <label>Temas y dinámicas</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                  <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                  <input class="form-control" type="text" name="tema_semana6_modulo1" [(ngModel)]="pensum.data['tema_semana6_modulo1']" >
+                                  <textarea class="form-control" name="desc_tema_semana6_modulo1" [(ngModel)]="pensum.data['desc_tema_semana6_modulo1']" ></textarea>
+                                  <input class="form-control" type="text" name="dinamica_semana6_modulo1" [(ngModel)]="pensum.data['dinamica_semana6_modulo1']" >
+                                  <textarea class="form-control" name="desc_dinamica_semana6_modulo1" [(ngModel)]="pensum.data['desc_dinamica_semana6_modulo1']" ></textarea>
                                 </div>
 
                                 <label>Convivencia y consolidación</label> 
                                 <div class="form-group">
-                                  <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                  <textarea class="form-control" name="convivencia_semana6_modulo1" [(ngModel)]="pensum.data['convivencia_semana6_modulo1']" ></textarea>
                                 </div>
 
                                 <h5>Semana 7</h5> <br>
                                 <label>Actividad</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
+                                  <input class="form-control" type="text" name="actividad_semana7_modulo1" [(ngModel)]="pensum.data['actividad_semana7_modulo1']" >
+                                  <textarea class="form-control" name="desc_actividad_semana7_modulo1" [(ngModel)]="pensum.data['desc_actividad_semana7_modulo1']"></textarea>
                                 </div>
 
                                 <label>Temas y dinámicas</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                  <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                  <input class="form-control" type="text" name="tema_semana7_modulo1" [(ngModel)]="pensum.data['tema_semana7_modulo1']" >
+                                  <textarea class="form-control" name="desc_tema_semana7_modulo1" [(ngModel)]="pensum.data['desc_tema_semana7_modulo1']" ></textarea>
+                                  <input class="form-control" type="text" name="dinamica_semana7_modulo1" [(ngModel)]="pensum.data['dinamica_semana7_modulo1']" >
+                                  <textarea class="form-control" name="desc_dinamica_semana7_modulo1" [(ngModel)]="pensum.data['desc_dinamica_semana7_modulo1']" ></textarea>
                                 </div>
 
                                 <label>Convivencia y consolidación</label> 
                                 <div class="form-group">
-                                  <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                  <textarea class="form-control" name="convivencia_semana7_modulo1" [(ngModel)]="pensum.data['convivencia_semana7_modulo1']" ></textarea>
                                 </div>
 
                                 <h5>Semana 8</h5> <br>
                                 <label>Actividad</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
+                                  <input class="form-control" type="text" name="actividad_semana8_modulo1" [(ngModel)]="pensum.data['actividad_semana8_modulo1']" >
+                                  <textarea class="form-control" name="desc_actividad_semana8_modulo1" [(ngModel)]="pensum.data['desc_actividad_semana8_modulo1']"></textarea>
                                 </div>
 
                                 <label>Temas y dinámicas</label> 
                                 <div class="form-group">
-                                  <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                  <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                  <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                  <input class="form-control" type="text" name="tema_semana8_modulo1" [(ngModel)]="pensum.data['tema_semana8_modulo1']" >
+                                  <textarea class="form-control" name="desc_tema_semana8_modulo1" [(ngModel)]="pensum.data['desc_tema_semana8_modulo1']" ></textarea>
+                                  <input class="form-control" type="text" name="dinamica_semana8_modulo1" [(ngModel)]="pensum.data['dinamica_semana8_modulo1']" >
+                                  <textarea class="form-control" name="desc_dinamica_semana8_modulo1" [(ngModel)]="pensum.data['desc_dinamica_semana8_modulo1']" ></textarea>
                                 </div>
 
                                 <label>Convivencia y consolidación</label> 
                                 <div class="form-group">
-                                  <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                  <textarea class="form-control" name="convivencia_semana8_modulo1" [(ngModel)]="pensum.data['convivencia_semana8_modulo1']" ></textarea>
                                 </div>
                                 
                                 <div class="card-footer text-center">
@@ -197,141 +217,141 @@
                                   <h5>Semana 1</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 2</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 3</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 4</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 6</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 7</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 8</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
                                   
                                   <div class="card-footer text-center">
@@ -347,141 +367,141 @@
                                   <h5>Semana 1</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 2</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 3</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 4</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 6</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 7</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 8</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
                                   
                                   <div class="card-footer text-center">
@@ -497,141 +517,141 @@
                                   <h5>Semana 1</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 2</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 3</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 4</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 6</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 7</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <h5>Semana 8</h5> <br>
                                   <label>Actividad</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel required>
+                                    <input class="form-control" type="text" name="actividad_semana1_modulo1" ngModel >
                                     <textarea class="form-control" name="desc_actividad_semana1_modulo1"></textarea>
                                   </div>
   
                                   <label>Temas y dinámicas</label> 
                                   <div class="form-group">
-                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel required></textarea>
-                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel required>
-                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel required></textarea>
+                                    <input class="form-control" type="text" name="tema_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_tema_semana1_modulo1" ngModel ></textarea>
+                                    <input class="form-control" type="text" name="dinamica_semana1_modulo1" ngModel >
+                                    <textarea class="form-control" name="desc_dinamica_semana1_modulo1" ngModel ></textarea>
                                   </div>
   
                                   <label>Convivencia y consolidación</label> 
                                   <div class="form-group">
-                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel required></textarea>
+                                    <textarea class="form-control" name="convivencia_semana1_modulo1" ngModel ></textarea>
                                   </div>
                                   
                                   <div class="card-footer text-center">

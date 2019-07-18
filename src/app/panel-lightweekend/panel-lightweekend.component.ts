@@ -13,12 +13,12 @@ import { environment } from 'environments/environment';
   styleUrls: ['./panel-lightweekend.component.css']
 })
 export class PanelLightweekendComponent implements OnInit {
-  
+
   @ViewChild(DataTableDirective) dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<boolean> = new Subject();
 
-  documentos :any = []; 
+  documentos :any = [];
   coleccion = 'light_weekend';
 
   redes :any = [];
@@ -50,7 +50,7 @@ export class PanelLightweekendComponent implements OnInit {
                 id: doc.id,
                 data: doc.data()
             });
-        });      
+        });
 
         this.documentos.forEach(usuario => {
           if(usuario.data['pago'] === 'true'){
@@ -59,7 +59,7 @@ export class PanelLightweekendComponent implements OnInit {
             usuario.data['pago'] = 'Pendiente'
           }
         })
-        
+
         this.documentos.forEach(grupo => {
         this.redes.forEach(red => {
           if(grupo.data['red'] === red.id){
@@ -70,14 +70,14 @@ export class PanelLightweekendComponent implements OnInit {
 
         if(this.isLoading){
           this.isLoading = false;
-          this.dtTrigger.next(false);  
+          this.dtTrigger.next(false);
         }else{
           this.rerenderDatatable();
-        }    
+        }
 
-      });      
+      });
 
-    }); 
+    });
   }
 
   rerenderDatatable() {
@@ -98,7 +98,7 @@ export class PanelLightweekendComponent implements OnInit {
     this.notificationsService.showConfirmationSwal().then(resultado => {
       if(resultado.value){
         this.notificationsService.showLoadingSwal('Enviando datos...', 'Espere por favor');
-        this.apiService.updateDocumento(this.coleccion, {          
+        this.apiService.updateDocumento(this.coleccion, {
           pago: 'true'
         }, id).then(respuesta => {
           this.notificationsService.showSwal('Editado', 'Acción realizada con éxito', 'success');
@@ -108,6 +108,10 @@ export class PanelLightweekendComponent implements OnInit {
         })
       }
     });
+  }
+
+  asignarColor(){
+    // $('#formModal').modal('toggle');
   }
 
 }
